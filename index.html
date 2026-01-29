@@ -77,122 +77,80 @@
         <section id="projects" class="projects">
             <div class="container">
                 <h2 class="section-title">Featured Projects</h2>
-                <div class="projects-list">
-                    <!-- Project 1 - LearnUp - Image Left -->
-                    <div class="project-item">
-                        <div class="project-image">
-                            <div class="project-slideshow">
-                                <img src="assets/images/LearnUp/1.webp" alt="LearnUp Screenshot 1" class="slideshow-image active">
-                                <img src="assets/images/LearnUp/2.webp" alt="LearnUp Screenshot 2" class="slideshow-image">
-                                <img src="assets/images/LearnUp/3.webp" alt="LearnUp Screenshot 3" class="slideshow-image">
-                                <img src="assets/images/LearnUp/4.webp" alt="LearnUp Screenshot 4" class="slideshow-image">
-                                <img src="assets/images/LearnUp/5.webp" alt="LearnUp Screenshot 5" class="slideshow-image">
-                                <button class="slideshow-prev" aria-label="Previous image">‹</button>
-                                <button class="slideshow-next" aria-label="Next image">›</button>
-                                <div class="slideshow-dots">
-                                    <span class="dot active" data-slide="0"></span>
-                                    <span class="dot" data-slide="1"></span>
-                                    <span class="dot" data-slide="2"></span>
-                                    <span class="dot" data-slide="3"></span>
-                                    <span class="dot" data-slide="4"></span>
-                                </div>
-                            </div>
+                <div class="projects-grid">
+                    <!-- Project 1 - LearnUp -->
+                    <a href="projects/learnup.html" class="project-card">
+                        <div class="project-card-image">
+                            <img src="assets/images/LearnUp/1.webp" alt="LearnUp">
+                            <div class="project-card-overlay"></div>
                         </div>
-                        <div class="project-content">
-                            <p class="project-overline">Featured Project</p>
-                            <h3 class="project-title">LearnUp - Learning Platform</h3>
-                            <div class="project-description">
-                                <p>An interactive learning management system designed to enhance student engagement and track academic progress. Features include course management, quiz generation, and performance analytics.</p>
-                            </div>
-                            <ul class="project-tech-list">
+                        <div class="project-card-content">
+                            <p class="project-card-category">Learning Platform</p>
+                            <h3 class="project-card-title">LearnUp</h3>
+                            <p class="project-card-desc">Interactive learning management system with course management and analytics</p>
+                            <ul class="project-card-tech">
                                 <li>React</li>
                                 <li>Node.js</li>
-                                <li>Express</li>
                                 <li>MongoDB</li>
                                 <li>Socket.io</li>
                             </ul>
-                            <div class="project-links">
-                                <a href="https://github.com/AshenDeminda" target="_blank" aria-label="GitHub Link">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                                </a>
-                            </div>
                         </div>
-                    </div>
-                    
-                    <!-- Project 2 - Aedora - Image Right -->
-                    <div class="project-item project-reverse">
-                        <div class="project-content">
-                            <p class="project-overline">AI Project</p>
-                            <h3 class="project-title">Aedora - Book Characters Chatbot</h3>
-                            <div class="project-description">
-                                <p>A RAG application that enables users to chat with characters extracted from PDF books using AI-driven persona generation. Features automatic text chunking and character caching for optimized performance.</p>
-                            </div>
-                            <ul class="project-tech-list">
+                    </a>
+
+                    <!-- Project 2 - Aedora -->
+                    <a href="projects/aedora.html" class="project-card">
+                        <div class="project-card-image">
+                            <img src="assets/images/Aedora/1.webp" alt="Aedora">
+                            <div class="project-card-overlay"></div>
+                        </div>
+                        <div class="project-card-content">
+                            <p class="project-card-category">AI Application</p>
+                            <h3 class="project-card-title">Aedora</h3>
+                            <p class="project-card-desc">RAG-based chatbot for conversing with book characters using AI</p>
+                            <ul class="project-card-tech">
                                 <li>React</li>
                                 <li>FastAPI</li>
                                 <li>LangChain</li>
                                 <li>OpenAI</li>
-                                <li>Python</li>
                             </ul>
-                            <div class="project-links">
-                                <a href="https://github.com/AshenDeminda" target="_blank" aria-label="GitHub Link">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                                </a>
-                            </div>
                         </div>
-                        <div class="project-image">
-                            <div class="project-slideshow">
-                                <img src="assets/images/Aedora/1.webp" alt="Aedora Screenshot 1" class="slideshow-image active">
-                                <img src="assets/images/Aedora/2.webp" alt="Aedora Screenshot 2" class="slideshow-image">
-                                <img src="assets/images/Aedora/3.webp" alt="Aedora Screenshot 3" class="slideshow-image">
-                                <img src="assets/images/Aedora/4.webp" alt="Aedora Screenshot 4" class="slideshow-image">
-                                <img src="assets/images/Aedora/5.webp" alt="Aedora Screenshot 5" class="slideshow-image">
-                                <button class="slideshow-prev" aria-label="Previous image">‹</button>
-                                <button class="slideshow-next" aria-label="Next image">›</button>
-                                <div class="slideshow-dots">
-                                    <span class="dot active" data-slide="0"></span>
-                                    <span class="dot" data-slide="1"></span>
-                                    <span class="dot" data-slide="2"></span>
-                                    <span class="dot" data-slide="3"></span>
-                                    <span class="dot" data-slide="4"></span>
-                                </div>
-                            </div>
+                    </a>
+
+                    <!-- Project 3 - PeerLearn -->
+                    <a href="projects/peerlearn.html" class="project-card">
+                        <div class="project-card-image">
+                            <img src="assets/images/PeerLearn/1.webp" alt="PeerLearn">
+                            <div class="project-card-overlay"></div>
                         </div>
-                    </div>
-                    
-                    <!-- Project 3 - PeerLearn - Image Left -->
-                    <div class="project-item">
-                        <div class="project-image">
-                            <div class="project-slideshow">
-                                <img src="assets/images/PeerLearn/1.webp" alt="PeerLearn Screenshot 1" class="slideshow-image active">
-                                <img src="assets/images/PeerLearn/2.webp" alt="PeerLearn Screenshot 2" class="slideshow-image">
-                                <button class="slideshow-prev" aria-label="Previous image">‹</button>
-                                <button class="slideshow-next" aria-label="Next image">›</button>
-                                <div class="slideshow-dots">
-                                    <span class="dot active" data-slide="0"></span>
-                                    <span class="dot" data-slide="1"></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <p class="project-overline">Mobile App</p>
-                            <h3 class="project-title">PeerLearn - Learning Platform</h3>
-                            <div class="project-description">
-                                <p>A mobile platform for academic Q&A featuring real-time feeds, leaderboards, and notification system. Built with Flutter and Firebase for seamless cloud syncing and real-time updates.</p>
-                            </div>
-                            <ul class="project-tech-list">
+                        <div class="project-card-content">
+                            <p class="project-card-category">Mobile App</p>
+                            <h3 class="project-card-title">PeerLearn</h3>
+                            <p class="project-card-desc">Academic Q&A platform with real-time feeds and leaderboards</p>
+                            <ul class="project-card-tech">
                                 <li>Flutter</li>
-                                <li>Firebase Auth</li>
+                                <li>Firebase</li>
                                 <li>Firestore</li>
-                                <li>Provider</li>
                             </ul>
-                            <div class="project-links">
-                                <a href="https://github.com/AshenDeminda" target="_blank" aria-label="GitHub Link">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                                </a>
-                            </div>
                         </div>
-                    </div>
+                    </a>
+
+                    <!-- Project 4 - Dummy Project -->
+                    <a href="#" class="project-card">
+                        <div class="project-card-image">
+                            <img src="assets/images/project-dummy.png" alt="Coming Soon">
+                            <div class="project-card-overlay"></div>
+                        </div>
+                        <div class="project-card-content">
+                            <p class="project-card-category">Web Application</p>
+                            <h3 class="project-card-title">Project Title</h3>
+                            <p class="project-card-desc">A modern web application with advanced features and seamless user experience</p>
+                            <ul class="project-card-tech">
+                                <li>Next.js</li>
+                                <li>TypeScript</li>
+                                <li>PostgreSQL</li>
+                            </ul>
+                        </div>
+                    </a>
                 </div>
                 <div class="projects-cta">
                     <a href="projects.html" class="btn-outline">View All Projects</a>

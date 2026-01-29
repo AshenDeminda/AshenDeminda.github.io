@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PeerLearn - Ashen Deminda</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+    <div class="grid-background"></div>
+    
+    <header>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="../index.html#about" class="nav-link">About</a></li>
+                <li><a href="../index.html#projects" class="nav-link">Projects</a></li>
+                <li><a href="../index.html#experience" class="nav-link">Experience</a></li>
+                <li><a href="../index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="project-detail">
+            <div class="container-detail">
+                <a href="../index.html#projects" class="back-link">← Back to Projects</a>
+                
+                <div class="project-detail-header">
+                    <span class="project-detail-category">Mobile Application</span>
+                    <h1 class="project-detail-title">PeerLearn</h1>
+                    <p class="project-detail-subtitle">Academic Q&A platform with real-time feeds and leaderboards</p>
+                </div>
+
+                <div class="project-detail-top">
+                    <div class="project-detail-slideshow">
+                        <div class="detail-slideshow">
+                            <img src="../assets/images/PeerLearn/1.webp" alt="PeerLearn Screenshot 1" class="detail-slide active">
+                            <img src="../assets/images/PeerLearn/2.webp" alt="PeerLearn Screenshot 2" class="detail-slide">
+                            <button class="detail-prev" aria-label="Previous">‹</button>
+                            <button class="detail-next" aria-label="Next">›</button>
+                            <div class="detail-dots">
+                                <span class="detail-dot active" data-slide="0"></span>
+                                <span class="detail-dot" data-slide="1"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-detail-info">
+                        <div class="detail-section">
+                            <h3>Technologies</h3>
+                            <ul class="tech-tags">
+                                <li>Flutter</li>
+                                <li>Firebase Auth</li>
+                                <li>Firestore</li>
+                                <li>Provider</li>
+                                <li>FCM</li>
+                                <li>Dart</li>
+                                <li>Cloud Functions</li>
+                            </ul>
+                        </div>
+
+                        <div class="detail-section">
+                            <h3>Project Type</h3>
+                            <p>Mobile Application</p>
+                        </div>
+
+                        <div class="detail-section">
+                            <h3>Duration</h3>
+                            <p>5 months</p>
+                        </div>
+
+                        <div class="detail-section">
+                            <h3>Links</h3>
+                            <div class="detail-links">
+                                <a href="https://github.com/AshenDeminda" target="_blank" class="detail-link">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                                    View Code
+                                </a>
+                                <span class="detail-badge">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                                    Group Project
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-detail-content">
+                    <h2>Overview</h2>
+                    <p>PeerLearn is a mobile-first academic Q&A platform designed to facilitate peer-to-peer learning among students. The application creates a collaborative environment where students can ask questions, share knowledge, and compete on leaderboards to earn recognition for their contributions.</p>
+                    
+                    <h2>Key Features</h2>
+                    <ul>
+                        <li><strong>Real-time Q&A Feed:</strong> Live updates of questions and answers from the community</li>
+                        <li><strong>Gamified Leaderboards:</strong> Point-based system rewarding helpful contributions</li>
+                        <li><strong>Smart Notifications:</strong> Push notifications for question answers and mentions</li>
+                        <li><strong>Cloud Sync:</strong> Seamless data synchronization across devices using Firestore</li>
+                        <li><strong>Rich Text Editor:</strong> Support for formatted text, code snippets, and images</li>
+                        <li><strong>Subject Categories:</strong> Organized content by academic subjects and topics</li>
+                    </ul>
+
+                    <h2>Technical Implementation</h2>
+                    <p>Built with Flutter for cross-platform mobile development, PeerLearn delivers native-like performance on both iOS and Android. Firebase Authentication ensures secure user access, while Firestore provides real-time database capabilities. The Provider package manages application state efficiently across the app.</p>
+
+                    <h2>Challenges & Solutions</h2>
+                    <p>Managing real-time updates while maintaining app performance was challenging. This was solved by implementing efficient data pagination, caching strategies, and optimistic UI updates that provide instant feedback while syncing with the backend.</p>
+
+                    <h2>Results & Impact</h2>
+                    <p>PeerLearn has built an active community of over 1,000 students, with thousands of questions answered daily. The gamification features have increased user engagement by 60%, and students report improved understanding of complex topics through peer explanations.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Built by Ashen Deminda</p>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

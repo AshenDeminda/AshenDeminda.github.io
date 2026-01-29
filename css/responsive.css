@@ -35,41 +35,21 @@
     }
 
     /* Projects */
-    .projects-list {
-        gap: 50px;
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
     }
 
-    .project-item,
-    .project-reverse {
-        grid-template-columns: 1fr !important;
+    .project-card {
+        height: 400px;
     }
 
-    .project-content,
-    .project-reverse .project-content {
-        grid-column: 1 !important;
-        grid-row: 1 !important;
-        text-align: left !important;
+    .project-card-content {
+        padding: 25px;
     }
 
-    .project-image,
-    .project-reverse .project-image {
-        grid-column: 1 !important;
-        grid-row: 2 !important;
-        opacity: 0.25;
-    }
-
-    .project-image img {
-        height: 300px;
-    }
-
-    .project-tech-list,
-    .project-reverse .project-tech-list {
-        justify-content: flex-start !important;
-    }
-
-    .project-links,
-    .project-reverse .project-links {
-        justify-content: flex-start !important;
+    .project-card-title {
+        font-size: 24px;
     }
 
     .project-description {
@@ -154,5 +134,35 @@
     /* Contact */
     .contact-content p {
         font-size: 16px;
+    }
+
+    /* Project Detail Pages */
+    .project-detail {
+        padding: 100px 25px 60px;
+    }
+
+    .project-detail-top {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .project-detail-content {
+        gap: 30px;
+    }
+
+    .project-detail-sidebar {
+        position: static;
+    }
+
+    .project-detail-title {
+        font-size: 36px;
+    }
+
+    .project-detail-subtitle {
+        font-size: 16px;
+    }
+
+    .detail-slideshow {
+        aspect-ratio: 4/3;
     }
 }
