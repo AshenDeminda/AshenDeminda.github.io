@@ -76,6 +76,11 @@ const observer = new IntersectionObserver(entries => {
 document.addEventListener('DOMContentLoaded', () => {
     const sections = document.querySelectorAll('section');
     sections.forEach(section => {
+        // Skip animation for detail pages
+        if (section.classList.contains('project-detail') || 
+            section.classList.contains('competitions-detail')) {
+            return;
+        }
         section.style.opacity = '0';
         section.style.transform = 'translateY(30px)';
         section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';

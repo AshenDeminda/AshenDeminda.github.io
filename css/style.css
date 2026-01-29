@@ -616,6 +616,7 @@ footer {
 .project-detail {
     padding: 120px 50px 100px;
     min-height: 100vh;
+    animation: fadeInUp 0.8s ease-out;
 }
 
 .container-detail {
@@ -714,11 +715,14 @@ footer {
     height: 100%;
     object-fit: cover;
     opacity: 0;
-    transition: opacity 0.5s ease-in-out;
+    visibility: hidden;
+    transition: opacity 0.5s ease-in-out, visibility 0s 0.5s;
 }
 
 .detail-slide.active {
     opacity: 1;
+    visibility: visible;
+    transition: opacity 0.5s ease-in-out, visibility 0s 0s;
 }
 
 .detail-prev,
@@ -930,6 +934,22 @@ footer {
 /* Competitions Detail Page */
 .competitions-detail {
     padding: 120px 50px 60px;
+    min-height: 100vh;
+    background-color: var(--bg-dark);
+    position: relative;
+    z-index: 1;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .competitions-detail-header {
