@@ -106,6 +106,7 @@ function followingDotCursor(options) {
   let color = options?.color || "#323232a6";
   let isHoveringLink = false;
   let isHoveringText = false;
+  let currentTextHeight = 30;
 
   const prefersReducedMotion = window.matchMedia(
     "(prefers-reduced-motion: reduce)"
@@ -160,34 +161,66 @@ function followingDotCursor(options) {
   }
 
   function setupHoverDetection() {
-    // Detect links and buttons
-    const linkElements = document.querySelectorAll('a, button, .nav-link, .btn-outline');
-    linkElements.forEach(el => {
-      el.addEventListener('mouseenter', () => {
-        isHoveringLink = true;
-        isHoveringText = false;
-        el.style.cursor = 'none';
+    // Wait for DOM to be ready
+    const setupEvents = () => {
+      // Detect links and buttons
+      const linkElements = document.querySelectorAll('a, button, .nav-link, .btn-outline');
+      linkElements.forEach(el => {
+        el.addEventListener('mouseenter', () => {
+          isHoveringLink = true;
+          isHoveringText = false;
+          el.style.cursor = 'none';
+        });
+        
+        el.addEventListener('mouseleave', () => {
+          isHoveringLink = false;
+        });
       });
-      
-      el.addEventListener('mouseleave', () => {
-        isHoveringLink = false;
-      });
-    });
 
-    // Detect text elements
-    const textElements = document.querySelectorAll('h1, h2, h3, p, li, span');
-    textElements.forEach(el => {
-      el.addEventListener('mouseenter', () => {
-        if (!el.closest('a') && !el.closest('button')) {
+      // Detect text elements
+      const textElements = document.querySelectorAll('h1, h2, h3, p, li, span');
+      textElements.forEach(el => {
+        el.addEventListener('mouseenter', () => {
+          if (!el.closest('a') && !el.closest('button')) {
+            isHoveringText = true;
+            isHoveringLink = false;
+            
+            // Calculate dynamic height based on element
+            const computedStyle = window.getComputedStyle(el);
+            const fontSize = parseInt(computedStyle.fontSize);
+            currentTextHeight = Math.max(fontSize * 0.8, 20); // Minimum 20px
+          }
+        });
+        
+        el.addEventListener('mouseleave', (e) => {
+          // Check if we're not moving to another text element
+          const relatedTarget = e.relatedTarget;
+          if (!relatedTarget || (!relatedTarget.matches('h1, h2, h3, p, li, span') && !relatedTarget.closest('h1, h2, h3, p, li, span'))) {
+            isHoveringText = false;
+          }
+        });
+      });
+
+      // Special handling for hero section elements
+      const heroElements = document.querySelectorAll('.hero-title, .hero-subtitle, .intro-text');
+      heroElements.forEach(el => {
+        el.style.pointerEvents = 'auto';
+        el.addEventListener('mouseenter', () => {
           isHoveringText = true;
           isHoveringLink = false;
-        }
+          
+          const computedStyle = window.getComputedStyle(el);
+          const fontSize = parseInt(computedStyle.fontSize);
+          currentTextHeight = Math.max(fontSize * 0.8, 20);
+        });
       });
-      
-      el.addEventListener('mouseleave', () => {
-        isHoveringText = false;
-      });
-    });
+    };
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', setupEvents);
+    } else {
+      setTimeout(setupEvents, 100);
+    }
   }
 
   function onWindowResize(e) {
@@ -244,8 +277,9 @@ function followingDotCursor(options) {
       context.fillStyle = color;
       
       if (isHoveringText) {
-        // Vertical line for text
-        context.fillRect(this.position.x - 1, this.position.y - 15, 2, 30);
+        // Dynamic vertical line for text based on font size
+        const lineHeight = currentTextHeight;
+        context.fillRect(this.position.x - 1, this.position.y - lineHeight/2, 2, lineHeight);
       } else if (isHoveringLink) {
         // Larger circle for links
         context.beginPath();
@@ -273,6 +307,23 @@ function followingDotCursor(options) {
 followingDotCursor({
   color: "rgba(255, 255, 255, 0.5)",
   zIndex: 9999
+});
+
+// Smooth scrolling for navigation links
+document.addEventListener('DOMContentLoaded', function() {
+  // Setup smooth scrolling
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
 });
 
 console.log('Portfolio loaded successfully!');
