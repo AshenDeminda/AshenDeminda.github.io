@@ -324,6 +324,88 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   });
+
+  // Initialize Project Slideshows
+  initializeSlideshows();
 });
+
+// Project Slideshow Functionality
+function initializeSlideshows() {
+  const slideshows = document.querySelectorAll('.project-slideshow');
+  
+  slideshows.forEach(slideshow => {
+    const images = slideshow.querySelectorAll('.slideshow-image');
+    const dots = slideshow.querySelectorAll('.dot');
+    const prevBtn = slideshow.querySelector('.slideshow-prev');
+    const nextBtn = slideshow.querySelector('.slideshow-next');
+    let currentSlide = 0;
+    let autoplayInterval;
+
+    function showSlide(index) {
+      images.forEach(img => img.classList.remove('active'));
+      dots.forEach(dot => dot.classList.remove('active'));
+      
+      if (index >= images.length) {
+        currentSlide = 0;
+      } else if (index < 0) {
+        currentSlide = images.length - 1;
+      } else {
+        currentSlide = index;
+      }
+      
+      images[currentSlide].classList.add('active');
+      dots[currentSlide].classList.add('active');
+    }
+
+    function nextSlide() {
+      showSlide(currentSlide + 1);
+    }
+
+    function prevSlide() {
+      showSlide(currentSlide - 1);
+    }
+
+    function startAutoplay() {
+      autoplayInterval = setInterval(nextSlide, 4000);
+    }
+
+    function stopAutoplay() {
+      clearInterval(autoplayInterval);
+    }
+
+    // Event listeners for navigation buttons
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => {
+        prevSlide();
+        stopAutoplay();
+        startAutoplay();
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        nextSlide();
+        stopAutoplay();
+        startAutoplay();
+      });
+    }
+
+    // Event listeners for dots
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        showSlide(index);
+        stopAutoplay();
+        startAutoplay();
+      });
+    });
+
+    // Pause autoplay on hover
+    slideshow.addEventListener('mouseenter', stopAutoplay);
+    slideshow.addEventListener('mouseleave', startAutoplay);
+
+    // Start autoplay
+    startAutoplay();
+  });
+}
 
 console.log('Portfolio loaded successfully!');
