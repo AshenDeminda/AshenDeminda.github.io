@@ -8,49 +8,316 @@
     <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
+    <div class="grid-background"></div>
+    
     <header>
         <nav>
-            <div class="logo">Ashen Deminda</div>
             <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="index.html#about">About</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="competitions.html" class="active">Competitions</a></li>
-                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="index.html#about" class="nav-link">About</a></li>
+                <li><a href="index.html#projects" class="nav-link">Projects</a></li>
+                <li><a href="index.html#experience" class="nav-link">Experience</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <section class="page-header">
-        <h1>Competitions & Achievements</h1>
-        <p>My competitive programming journey and accomplishments</p>
-    </section>
+    <main>
+        <section class="competitions-detail">
+            <div class="container-detail">
+                <a href="index.html#competitions" class="back-link">← Back to Competitions</a>
+                
+                <div class="competitions-detail-header">
+                    <span class="competitions-detail-category">Competitive Programming & CTF</span>
+                    <h1 class="competitions-detail-title">Competition Achievements</h1>
+                    <p class="competitions-detail-subtitle">Showcasing excellence in competitive programming, cybersecurity challenges, and hackathons</p>
+                </div>
 
-    <section class="competitions-detailed">
-        <div class="container">
-            <div class="competition-list">
-                <div class="competition-item">
-                    <div class="competition-image">
-                        <img src="assets/images/competition1.png" alt="Competition 1">
-                    </div>
-                    <div class="competition-details">
-                        <h2>Competition Title</h2>
-                        <p class="competition-date">Date: January 2026</p>
-                        <p class="competition-description">Description of the competition, what you achieved, and key highlights.</p>
-                        <div class="competition-achievement">
-                            <span class="achievement-badge">Award/Position</span>
+                <div class="competition-item" id="code-night">
+                    <div class="competition-top">
+                        <div class="competition-slideshow">
+                            <div class="detail-slideshow">
+                                <img src="assets/images/competition-dummy.png" alt="Code Night 2025 - 1" class="detail-slide active">
+                                <img src="assets/images/competition-dummy.png" alt="Code Night 2025 - 2" class="detail-slide">
+                                <img src="assets/images/competition-dummy.png" alt="Code Night 2025 - 3" class="detail-slide">
+                                <button class="detail-prev" aria-label="Previous">‹</button>
+                                <button class="detail-next" aria-label="Next">›</button>
+                                <div class="detail-dots">
+                                    <span class="detail-dot active" data-slide="0"></span>
+                                    <span class="detail-dot" data-slide="1"></span>
+                                    <span class="detail-dot" data-slide="2"></span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="competition-links">
-                            <a href="assets/certificates/cert1.pdf" class="btn-small" target="_blank">View Certificate</a>
+
+                        <div class="competition-info">
+                            <div class="detail-section">
+                                <h2 class="competition-name">Code Night 2025</h2>
+                                <p class="competition-rank">First Runner-Up</p>
+                            </div>
+
+                            <div class="detail-section">
+                                <h3>Organizer</h3>
+                                <p>DEIE, University of Ruhuna</p>
+                            </div>
+
+                            <div class="detail-section">
+                                <h3>Date</h3>
+                                <p>January 2025</p>
+                            </div>
+
+                            <div class="detail-section">
+                                <h3>Achievement</h3>
+                                <p>Developed a full-stack University Event Management system with ML-based moderation. Competed against top teams and secured 2nd place with innovative features and robust implementation.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
+
+                <div class="competition-item" id="ieee-xtreme">
+                    <div class="competition-top">
+                        <div class="competition-slideshow">
+                            <div class="detail-slideshow">
+                                <img src="assets/images/competition-dummy.png" alt="IEEE Xtreme 18.0 - 1" class="detail-slide active">
+                                <img src="assets/images/competition-dummy.png" alt="IEEE Xtreme 18.0 - 2" class="detail-slide">
+                                <img src="assets/images/competition-dummy.png" alt="IEEE Xtreme 18.0 - 3" class="detail-slide">
+                                <button class="detail-prev" aria-label="Previous">‹</button>
+                                <button class="detail-next" aria-label="Next">›</button>
+                                <div class="detail-dots">
+                                    <span class="detail-dot active" data-slide="0"></span>
+                                    <span class="detail-dot" data-slide="1"></span>
+                                    <span class="detail-dot" data-slide="2"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="competition-info">
+                            <div class="detail-section">
+                                <h2 class="competition-name">IEEE Xtreme 18.0</h2>
+                                <p class="competition-rank">Global Rank 418 | Sri Lanka Rank 22</p>
+                            </div>
+
+                            <div class="detail-section">
+                                <h3>Team</h3>
+                                <p>Team DotTreX</p>
+                            </div>
+
+                            <div class="detail-section">
+                                <h3>Date</h3>
+                                <p>October 2024</p>
+                            </div>
+
+                            <div class="detail-section">
+                                <h3>Achievement</h3>
+                                <p>Competed globally in a 24-hour extreme programming competition. Solved complex algorithmic challenges and secured top rankings among thousands of participants worldwide.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="competition-item" id="algoxplore">
+                    <div class="competition-top">
+                        <div class="competition-slideshow">
+                            <div class="detail-slideshow">
+                                <img src="assets/images/competition-dummy.png" alt="Algoxplore 1.0 - 1" class="detail-slide active">
+                                <img src="assets/images/competition-dummy.png" alt="Algoxplore 1.0 - 2" class="detail-slide">
+                                <img src="assets/images/competition-dummy.png" alt="Algoxplore 1.0 - 3" class="detail-slide">
+                                <button class="detail-prev" aria-label="Previous">‹</button>
+                                <button class="detail-next" aria-label="Next">›</button>
+                                <div class="detail-dots">
+                                    <span class="detail-dot active" data-slide="0"></span>
+                                    <span class="detail-dot" data-slide="1"></span>
+                                    <span class="detail-dot" data-slide="2"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="competition-info">
+                            <div class="detail-section">
+                                <h2 class="competition-name">Algoxplore 1.0</h2>
+                                <p class="competition-rank">4th Place</p>
+                            </div>
+
+                            <div class="detail-section">
+                                <h3>Organizer</h3>
+                                <p>NSBM Green University</p>
+                            </div>
+
+                            <div class="detail-section">
+                                <h3>Date</h3>
+                                <p>2024</p>
+                            </div>
+
+                            <div class="detail-section">
+                                <h3>Achievement</h3>
+                                <p>Competed against 450+ teams in a Capture The Flag (CTF) competition. Demonstrated strong problem-solving and cybersecurity skills to finish in 4th place.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="competition-item" id="codex">
+                    <div class="competition-top">
+                        <div class="competition-slideshow">
+                            <div class="detail-slideshow">
+                                <img src="assets/images/competition-dummy.png" alt="Codex 2025 - 1" class="detail-slide active">
+                                <img src="assets/images/competition-dummy.png" alt="Codex 2025 - 2" class="detail-slide">
+                                <button class="detail-prev" aria-label="Previous">‹</button>
+                                <button class="detail-next" aria-label="Next">›</button>
+                                <div class="detail-dots">
+                                    <span class="detail-dot active" data-slide="0"></span>
+                                    <span class="detail-dot" data-slide="1"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="competition-info">
+                            <div class="detail-section">
+                                <h2 class="competition-name">Codex 2025</h2>
+                                <p class="competition-rank">9th Place (Top 20 Finalist)</p>
+                            </div>
+
+                            <div class="detail-section">
+                                <h3>Organizer</h3>
+                                <p>University of Moratuwa</p>
+                            </div>
+
+                            <div class="detail-section">
+                                <h3>Date</h3>
+                                <p>January 2025</p>
+                            </div>
+
+                            <div class="detail-section">
+                                <h3>Achievement</h3>
+                                <p>Qualified as a Top 20 Finalist in a competitive debugging challenge, demonstrating exceptional code analysis and problem-solving capabilities.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="competition-item" id="codequest">
+                    <div class="competition-top">
+                        <div class="competition-slideshow">
+                            <div class="detail-slideshow">
+                                <img src="assets/images/competition-dummy.png" alt="CodeQuest - 1" class="detail-slide active">
+                                <img src="assets/images/competition-dummy.png" alt="CodeQuest - 2" class="detail-slide">
+                                <button class="detail-prev" aria-label="Previous">‹</button>
+                                <button class="detail-next" aria-label="Next">›</button>
+                                <div class="detail-dots">
+                                    <span class="detail-dot active" data-slide="0"></span>
+                                    <span class="detail-dot" data-slide="1"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="competition-info">
+                            <div class="detail-section">
+                                <h2 class="competition-name">CodeQuest - Vault Edition</h2>
+                                <p class="competition-rank">Top 10 Finalist</p>
+                            </div>
+
+                            <div class="detail-section">
+                                <h3>Organizer</h3>
+                                <p>IEEE Student Branch of UCSC</p>
+                            </div>
+
+                            <div class="detail-section">
+                                <h3>Date</h3>
+                                <p>2024</p>
+                            </div>
+
+                            <div class="detail-section">
+                                <h3>Achievement</h3>
+                                <p>Qualified for the finals in this Capture The Flag competition, showcasing strong cybersecurity and problem-solving skills among top performers.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="competition-item" id="red-cypher">
+                    <div class="competition-top">
+                        <div class="competition-slideshow">
+                            <div class="detail-slideshow">
+                                <img src="assets/images/competition-dummy.png" alt="Red Cypher 2.0 - 1" class="detail-slide active">
+                                <img src="assets/images/competition-dummy.png" alt="Red Cypher 2.0 - 2" class="detail-slide">
+                                <button class="detail-prev" aria-label="Previous">‹</button>
+                                <button class="detail-next" aria-label="Next">›</button>
+                                <div class="detail-dots">
+                                    <span class="detail-dot active" data-slide="0"></span>
+                                    <span class="detail-dot" data-slide="1"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="competition-info">
+                            <div class="detail-section">
+                                <h2 class="competition-name">Red Cypher 2.0</h2>
+                                <p class="competition-rank">Top 10 Finalist</p>
+                            </div>
+
+                            <div class="detail-section">
+                                <h3>Organizer</h3>
+                                <p>IEEE Computer Society, University of Ruhuna</p>
+                            </div>
+
+                            <div class="detail-section">
+                                <h3>Date</h3>
+                                <p>2024</p>
+                            </div>
+
+                            <div class="detail-section">
+                                <h3>Achievement</h3>
+                                <p>Reached the finals in this cybersecurity CTF competition, demonstrating advanced penetration testing and vulnerability assessment skills.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="competition-item" id="eminence">
+                    <div class="competition-top">
+                        <div class="competition-slideshow">
+                            <div class="detail-slideshow">
+                                <img src="assets/images/competition-dummy.png" alt="Eminence 5.0 - 1" class="detail-slide active">
+                                <img src="assets/images/competition-dummy.png" alt="Eminence 5.0 - 2" class="detail-slide">
+                                <button class="detail-prev" aria-label="Previous">‹</button>
+                                <button class="detail-next" aria-label="Next">›</button>
+                                <div class="detail-dots">
+                                    <span class="detail-dot active" data-slide="0"></span>
+                                    <span class="detail-dot" data-slide="1"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="competition-info">
+                            <div class="detail-section">
+                                <h2 class="competition-name">Eminence 5.0</h2>
+                                <p class="competition-rank">5th Place</p>
+                            </div>
+
+                            <div class="detail-section">
+                                <h3>Team</h3>
+                                <p>Team BitSync</p>
+                            </div>
+
+                            <div class="detail-section">
+                                <h3>Organizer</h3>
+                                <p>IEEE WIE Affinity Group, University of Ruhuna</p>
+                            </div>
+
+                            <div class="detail-section">
+                                <h3>Achievement</h3>
+                                <p>Collaborated with Team BitSync to secure 5th place in this competitive programming and innovation challenge.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <footer>
-        <p>&copy; 2026 Ashen Deminda. All rights reserved.</p>
+        <p>Built by Ashen Deminda</p>
     </footer>
 
     <script src="js/main.js"></script>

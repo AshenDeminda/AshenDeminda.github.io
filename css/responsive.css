@@ -56,6 +56,21 @@
         background-color: transparent;
         padding: 0;
     }
+
+    /* Competitions */
+    .competitions-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .competition-card {
+        height: 250px;
+    }
+
+    .competition-top {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
 }
 
 /* Mobile Styles */
