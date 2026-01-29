@@ -1,0 +1,465 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-dark: #0a0a0a;
+    --bg-darker: #000000;
+    --text-primary: #e4e4e7;
+    --text-secondary: #a1a1aa;
+    --accent: #ffffff;
+    --grid-color: rgba(255, 255, 255, 0.03);
+    --transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    background-color: var(--bg-dark);
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Grid Background */
+.grid-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(var(--grid-color) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+    background-size: 50px 50px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 100px;
+}
+
+/* Header & Navigation */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgba(10, 10, 10, 0.85);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    transition: var(--transition);
+}
+
+nav {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 25px 50px;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    align-items: center;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--text-primary);
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    transition: var(--transition);
+    position: relative;
+}
+
+.nav-link:hover {
+    color: var(--accent);
+}
+
+.resume-link {
+    border: 1px solid var(--text-primary);
+    padding: 8px 15px;
+    border-radius: 4px;
+}
+
+.resume-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Main Content */
+main {
+    position: relative;
+    z-index: 1;
+    padding-top: 80px;
+}
+
+/* Hero Section */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 50px00px 0;
+    position: relative;
+}
+
+.hero-content {
+    max-width: 1000px;
+}
+
+.intro-text {
+    color: var(--text-primary);
+    font-size: 16px;
+    margin-bottom: 20px;
+    font-weight: 400;
+}
+
+.hero-title {
+    font-size: clamp(40px, 8vw, 80px);
+    font-weight: 700;
+    color: var(--accent);
+    margin: 0;
+    line-height: 1.1;
+}
+
+.hero-subtitle {
+    font-size: clamp(30px, 6vw, 60px);
+    font-weight: 700;
+    color: var(--text-secondary);
+    margin: 10px 0;
+    line-height: 1.1;
+}
+
+.hero-description {
+    margin-top: 25px;
+    max-width: 540px;
+    font-size: 18px;
+    line-height: 1.8;
+    color: var(--text-secondary);
+}
+
+/* Buttons */
+.btn-outline {
+    display: inline-block;
+    margin-top: 50px;
+    padding: 18px 28px;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: var(--transition);
+    background-color: transparent;
+}
+
+.btn-outline:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Social Sidebar */
+.social-sidebar {
+    position: fixed;
+    bottom: 0;
+    left: 10px;
+    right: auto;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.social-sidebar a {
+    color: var(--text-secondary);
+    transition: var(--transition);
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.social-sidebar a:hover {
+    color: var(--accent);
+    transform: translateY(-3px);
+}
+
+.social-line {
+    width: 1px;
+    height: 90px;
+    background-color: var(--text-secondary);
+}
+
+/* Sections */
+section {
+    padding: 100px 100px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    font-size: clamp(26px, 5vw, 32px);
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 40px;
+    white-space: nowrap;
+}
+
+.section-number {
+    color: var(--text-primary);
+    font-size: 20px;
+    font-weight: 400;
+    margin-right: 10px;
+}
+
+/* About Section */
+.about-content {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 50px;
+}
+
+.about-text p {
+    margin-bottom: 15px;
+    font-size: 18px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+}
+
+.tech-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(140px, 200px));
+    gap: 10px;
+    padding: 0;
+    margin: 20px 0;
+    list-style: none;
+}
+
+.tech-list li {
+    position: relative;
+    padding-left: 20px;
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.tech-list li:before {
+    content: "▹";
+    position: absolute;
+    left: 0;
+    color: var(--text-primary);
+}
+
+.about-image {
+    position: relative;
+    max-width: 300px;
+}
+
+.img-wrapper {
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.img-wrapper img {
+    width: 100%;
+    border-radius: 4px;
+    filter: grayscale(100%);
+    transition: var(--transition);
+}
+
+.img-wrapper:hover img {
+    filter: grayscale(0%);
+}
+
+.img-wrapper::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.1);
+   Footer */
+footer {
+    text-align: center;
+    padding: 30px;
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* Experience Section */
+.experience-content {
+    max-width: 700px;
+}
+
+.job {
+    margin-bottom: 40px;
+}
+
+.job-title {
+    color: var(--accent);
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.company {
+    color: var(--text-primary);
+}
+
+.job-date {
+    color: var(--text-secondary);
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.job-description {
+    padding-left: 30px;
+}
+
+.job-description li {
+    color: var(--text-secondary);
+    margin-bottom: 10px;
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.job-description li::marker {
+    color: var(--text-primary);
+}
+
+/* Contact Section */
+.contact {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 100px 0;
+}
+
+.contact-content {
+    margin-top: 20px;
+}
+
+.contact-content p {
+    font-size: 18px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 40px;
+}
+
+/* Page Header */
+.page-header {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+    text-align: center;
+    padding: 4rem 2rem;
+}
+
+.page-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.page-header p {
+    font-size: 1.2rem;
+}
+
+/* Detailed Project/Competition Pages */
+.project-item,
+.competition-item {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.project-image img,
+.competition-image img {
+    width: 400px;
+    height: 300px;
+    object-fit: cover;
+}
+
+.project-details,
+.competition-details {
+    padding: 2rem;
+    flex: 1;
+}
+
+.project-details h2,
+.competition-details h2 {
+    text-align: left;
+    margin-bottom: 1rem;
+}
+
+.project-description,
+.competition-description {
+    color: var(--text-light);
+    margin-bottom: 1rem;
+}
+
+.project-tech {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin: 1rem 0;
+}
+
+.tech-tag {
+    background-color: var(--bg-light);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    color: var(--text-color);
+}
+
+.achievement-badge {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-weight: 600;
+    margin: 1rem 0;
+}
+
+.competition-date {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.project-links,
+.competition-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+/* Footer */
+footer {
+    background-color: var(--text-color);
+    color: white;
+    text-align: center;
+    padding: 2rem;
+}

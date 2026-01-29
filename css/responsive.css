@@ -1,0 +1,134 @@
+/* Tablet Styles */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 50px;
+    }
+
+    section {
+        padding: 80px 50px;
+    }
+
+    .hero {
+        padding: 0 50px;
+    }
+
+    .social-sidebar {
+        display: none;
+    }
+
+    /* Navigation */
+    nav {
+        padding: 20px 25px;
+    }
+
+    .nav-links {
+        gap: 20px;
+    }
+
+    /* About */
+    .about-content {
+        grid-template-columns: 1fr;
+    }
+
+    .about-image {
+        margin: 0 auto;
+    }
+
+    /* Projects */
+    .project-item {
+        grid-template-columns: 1fr;
+    }
+
+    .project-content {
+        grid-column: 1;
+    }
+
+    .project-image {
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+    .project-description {
+        background-color: transparent;
+        padding: 0;
+    }
+}
+
+/* Mobile Styles */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 25px;
+    }
+
+    section {
+        padding: 60px 25px;
+    }
+
+    .hero {
+        padding: 0 25px;
+        min-height: 90vh;
+    }
+
+    /* Navigation */
+    nav {
+        padding: 15px 20px;
+    }
+
+    .nav-links {
+        gap: 15px;
+        font-size: 12px;
+    }
+
+    .resume-link {
+        padding: 6px 12px;
+    }
+
+    /* Typography */
+    .hero-title {
+        font-size: 40px;
+    }
+
+    .hero-subtitle {
+        font-size: 30px;
+    }
+
+    .hero-description {
+        font-size: 16px;
+    }
+
+    .section-title {
+        font-size: 24px;
+    }
+
+    .section-number {
+        font-size: 18px;
+    }
+
+    /* About */
+    .about-text p {
+        font-size: 16px;
+    }
+
+    .tech-list {
+        grid-template-columns: 1fr;
+    }
+
+    .img-wrapper img {
+        width: 100%;
+    }
+
+    /* Projects */
+    .project-tech-list {
+        gap: 10px;
+    }
+
+    /* Experience */
+    .job-description {
+        padding-left: 20px;
+    }
+
+    /* Contact */
+    .contact-content p {
+        font-size: 16px;
+    }
+}
