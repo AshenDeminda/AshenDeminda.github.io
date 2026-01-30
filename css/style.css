@@ -544,12 +544,11 @@ footer p {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: grayscale(100%);
     transition: var(--transition);
 }
 
 .competition-card:hover .competition-card-image img {
-    filter: grayscale(0%);
+    transform: scale(1.05);
 }
 
 .competition-card-overlay {
@@ -560,11 +559,16 @@ footer p {
     height: 100%;
     background: linear-gradient(
         to bottom,
-        rgba(0, 0, 0, 0.3) 0%,
-        rgba(0, 0, 0, 0.7) 50%,
-        rgba(0, 0, 0, 0.95) 100%
+        rgba(10, 10, 10, 0.95) 0%,
+        rgba(10, 10, 10, 0.85) 50%,
+        rgba(10, 10, 10, 0.95) 100%
     );
     z-index: 2;
+    transition: opacity 0.3s ease;
+}
+
+.competition-card:hover .competition-card-overlay {
+    opacity: 0;
 }
 
 .competition-card-content {
