@@ -275,12 +275,9 @@ section {
 .img-wrapper img {
     width: 100%;
     border-radius: 4px;
-    filter: grayscale(100%);
+    /* Remove grayscale for color image */
+    filter: none;
     transition: var(--transition);
-}
-
-.img-wrapper:hover img {
-    filter: grayscale(0%);
 }
 
 .img-wrapper::before {
@@ -290,17 +287,25 @@ section {
     height: 100%;
     top: 0;
     left: 0;
-    background-color: rgba(255, 255, 255, 0.1);
-   Footer */
-footer {
-    text-align: center;
-    padding: 30px;
-    color: var(--text-secondary);
-    font-size: 14px;
+    pointer-events: none;
+    border-radius: 4px;
+    background: linear-gradient(
+        to bottom,
+        rgba(10, 10, 10, 0.95) 0%,
+        rgba(10, 10, 10, 0.85) 50%,
+        rgba(10, 10, 10, 0.95) 100%
+    );
+    z-index: 2;
+    transition: opacity 0.3s ease;
+    opacity: 1;
 }
+
+.img-wrapper:hover::before {
+    opacity: 0;
 }
-footer p {
-    margin: 0;
+
+.img-wrapper:hover img {
+    transform: scale(1.05);
 }
 
 /* Experience Section */
@@ -504,6 +509,7 @@ footer p {
     text-align: center;
     margin-top: 60px;
 }
+
 /* Competitions Section */
 .competitions {
     padding: 100px 50px;
@@ -608,6 +614,7 @@ footer p {
     line-height: 1.5;
     margin: 0;
 }
+
 /* Footer */
 footer {
     background-color: var(--text-color);
@@ -1032,4 +1039,138 @@ footer {
 .competitions-cta {
     text-align: center;
     margin-top: 50px;
+}
+
+/* Project Detail Grid for projects.html */
+.projects-grid-detail {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 32px;
+    margin-top: 40px;
+}
+.project-card-detail {
+    display: flex;
+    flex-direction: column;
+    background: var(--background-secondary);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+}
+.project-card-detail:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+}
+.project-card-image-detail {
+    width: 100%;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    position: relative;
+}
+.project-card-image-detail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s;
+}
+.project-card-detail:hover .project-card-image-detail img {
+    transform: scale(1.05);
+}
+.project-card-content-detail {
+    padding: 24px 20px 18px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.project-card-content-detail h3 {
+    margin: 0 0 6px 0;
+    font-size: 1.25rem;
+    color: var(--primary-color);
+}
+.project-card-content-detail p {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+/* Projects List Section (projects.html) */
+.projects-list-section {
+    padding: 100px 50px;
+}
+.projects-list-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    margin-top: 50px;
+}
+.project-list-card {
+    position: relative;
+    display: block;
+    height: 280px;
+    border-radius: 8px;
+    overflow: hidden;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    background: none;
+}
+.project-list-card:hover {
+    transform: translateY(-5px);
+}
+.project-list-card-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+.project-list-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition);
+}
+.project-list-card:hover .project-list-card-image img {
+    transform: scale(1.05);
+}
+.project-list-card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        rgba(10, 10, 10, 0.95) 0%,
+        rgba(10, 10, 10, 0.85) 50%,
+        rgba(10, 10, 10, 0.95) 100%
+    );
+    z-index: 2;
+    transition: opacity 0.3s ease;
+}
+.project-list-card:hover .project-list-card-overlay {
+    opacity: 0;
+}
+.project-list-card-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 25px;
+    z-index: 3;
+}
+.project-list-card-title {
+    color: var(--accent);
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+.project-list-card-desc {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    margin-bottom: 0;
 }
