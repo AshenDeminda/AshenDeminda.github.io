@@ -1174,3 +1174,31 @@ footer {
     font-size: 1rem;
     margin-bottom: 0;
 }
+
+.navbar-back-link {
+    position: absolute;
+    left: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-primary);
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    z-index: 1100;
+    transition: color 0.2s;
+    padding: 0;
+    cursor: pointer;
+}
+.navbar-back-link:hover {
+    color: var(--accent);
+}
+@media (max-width: 700px) {
+    .navbar-back-link {
+        left: 10px;
+        font-size: 14px;
+    }
+}
