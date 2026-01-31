@@ -30,7 +30,7 @@
                 <div class="project-detail-header">
                     <span class="project-detail-category">AI Application</span>
                     <h1 class="project-detail-title">Aedora</h1>
-                    <p class="project-detail-subtitle">RAG-based chatbot for conversing with book characters using AI</p>
+                    <p class="project-detail-subtitle">Bringing Literature to Life with RAG & Generative AI</p>
                 </div>
 
                 <div class="project-detail-top">
@@ -60,11 +60,11 @@
                                 <li>React</li>
                                 <li>FastAPI</li>
                                 <li>LangChain</li>
-                                <li>OpenAI GPT</li>
-                                <li>Python</li>
-                                <li>Vector DB</li>
-                                <li>PDF Parsing</li>
-                                <li>Redis</li>
+                                <li>OpenAI GPT-4o-mini</li>
+                                <li>ChromaDB</li>
+                                <li>SQLAlchemy</li>
+                                <li>PyPDF2</li>
+                                <li>pdfplumber</li>
                             </ul>
                         </div>
 
@@ -81,9 +81,9 @@
                         <div class="detail-section">
                             <h3>Links</h3>
                             <div class="detail-links">
-                                <a href="https://github.com/AshenDeminda" target="_blank" class="detail-link">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                                    View Code
+                                <a href="https://www.linkedin.com/posts/ashen-deminda-rathnayake_rextro-silverjubilee-universityofruhuna-activity-7413212725130014720-apPb?utm_source=share&utm_medium=member_desktop" target="_blank" class="detail-link">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                                    View on LinkedIn
                                 </a>
                                 <span class="detail-badge">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
@@ -96,26 +96,102 @@
 
                 <div class="project-detail-content">
                     <div class="project-detail-main">
-                        <h2>Overview</h2>
-                        <p>Aedora is an innovative AI-powered application that brings book characters to life through intelligent conversations. Using advanced RAG (Retrieval-Augmented Generation) technology, users can engage in meaningful dialogues with their favorite fictional characters extracted directly from PDF books.</p>
+                        <h2>📖 Project Overview</h2>
+                        <p>Aedora is an interactive AI platform that transforms static PDF books into dynamic conversations. Users can upload any book (PDF), automatically extract character personas, and chat with them in real-time.</p>
+                        <p>Unlike generic chatbots, Aedora uses a <strong>Retrieval-Augmented Generation (RAG)</strong> pipeline to ensure characters remain strictly "in-character" and grounded in the text, significantly reducing hallucinations while maintaining a natural conversational flow.</p>
                         
-                        <h2>Key Features</h2>
+                        <h2>🚀 Key Features</h2>
                         <ul>
-                            <li><strong>Character Extraction:</strong> Automatic identification and extraction of characters from uploaded PDF books</li>
-                            <li><strong>AI-Driven Personas:</strong> Dynamic persona generation based on character traits and story context</li>
-                            <li><strong>Smart Text Chunking:</strong> Efficient document processing with intelligent text segmentation</li>
-                            <li><strong>Character Caching:</strong> Optimized performance through intelligent character data caching</li>
-                            <li><strong>Natural Conversations:</strong> Context-aware responses that maintain character authenticity</li>
+                            <li><strong>PDF-to-Persona Engine:</strong> Automatically ingests raw PDF text, identifies main characters, and generates detailed JSON profiles (traits, relationships, voice)</li>
+                            <li><strong>Grounded RAG Chat:</strong> Answers are constrained to retrieved book passages, ensuring the character knows <em>only</em> what has happened in the story</li>
+                            <li><strong>Persistent Memory:</strong> Saves chat history and character profiles using persistent vector storage and SQL, eliminating the need to re-process books</li>
+                            <li><strong>Smart Fallbacks:</strong> Characters gracefully handle out-of-scope questions (e.g., "I don't recall that happening in my story") rather than hallucinating facts</li>
+                            <li><strong>Streaming Responses:</strong> Real-time token streaming for a responsive user experience</li>
                         </ul>
 
-                        <h2>Technical Implementation</h2>
-                        <p>The application utilizes React for the frontend interface, providing a smooth and responsive user experience. The backend is powered by FastAPI, offering high-performance API endpoints. LangChain orchestrates the RAG pipeline, while OpenAI's GPT models generate contextually relevant character responses.</p>
+                        <h2>🧠 System Architecture & Workflow</h2>
+                        <p>The core of Aedora is a multi-stage pipeline designed for accuracy and speed:</p>
+                        
+                        <h3>1. Ingestion & Chunking</h3>
+                        <ul>
+                            <li>Books are uploaded and text is extracted using a dual-extraction approach</li>
+                            <li>Text is split into semantic chunks safe for embedding context windows</li>
+                        </ul>
 
-                        <h2>Challenges & Solutions</h2>
-                        <p>Processing large PDF documents efficiently was a significant challenge. This was addressed by implementing an intelligent chunking algorithm that maintains context while splitting text, and a caching system that stores character embeddings for faster retrieval during conversations.</p>
+                        <h3>2. Vector Indexing</h3>
+                        <ul>
+                            <li>Chunks are embedded using <code>text-embedding-3-small</code> and stored in <strong>ChromaDB</strong></li>
+                            <li>Batch processing is used to handle large texts efficiently without hitting API rate limits</li>
+                        </ul>
 
-                        <h2>Results & Impact</h2>
-                        <p>Aedora has enabled users to explore literature in new and engaging ways, with users reporting increased understanding of character motivations and story depth. The application has processed over 500 books and facilitated thousands of character conversations.</p>
+                        <h3>3. Character Profiling (The "Secret Sauce")</h3>
+                        <ul>
+                            <li>Before chatting, the system analyzes the text to build structured <strong>Persona Profiles</strong></li>
+                            <li><em>System Prompt Strategy:</em> These profiles are fed into the chat system prompt to enforce tone, voice, and narrative constraints</li>
+                        </ul>
+
+                        <h3>4. Retrieval-Augmented Generation (RAG)</h3>
+                        <p><strong>User Query → Vector Search (Retrieve top relevant book passages) → LLM Generation (Context + Persona + Query) → In-Character Response</strong></p>
+
+                        <h2>🛠️ Tech Stack & Engineering Decisions</h2>
+                        <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+                            <thead>
+                                <tr style="border-bottom: 2px solid var(--primary-color);">
+                                    <th style="text-align: left; padding: 12px;">Component</th>
+                                    <th style="text-align: left; padding: 12px;">Technology</th>
+                                    <th style="text-align: left; padding: 12px;">Why it was chosen</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="border-bottom: 1px solid rgba(100, 255, 218, 0.1);">
+                                    <td style="padding: 12px;"><strong>Backend Framework</strong></td>
+                                    <td style="padding: 12px;">FastAPI (Python)</td>
+                                    <td style="padding: 12px;">Lightweight, high-performance async support, and auto-generated Swagger docs for easy API testing</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid rgba(100, 255, 218, 0.1);">
+                                    <td style="padding: 12px;"><strong>LLM & Embeddings</strong></td>
+                                    <td style="padding: 12px;">OpenAI API</td>
+                                    <td style="padding: 12px;">text-embedding-3-small for cost-effective vector search; gpt-4o-mini for rich persona extraction and structured JSON output</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid rgba(100, 255, 218, 0.1);">
+                                    <td style="padding: 12px;"><strong>Vector Database</strong></td>
+                                    <td style="padding: 12px;">ChromaDB</td>
+                                    <td style="padding: 12px;">Local-first, persistent vector storage that allows fast similarity search without complex cloud infrastructure</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid rgba(100, 255, 218, 0.1);">
+                                    <td style="padding: 12px;"><strong>Orchestration</strong></td>
+                                    <td style="padding: 12px;">LangChain</td>
+                                    <td style="padding: 12px;">Simplifies the RAG workflow, prompt templating, and chain management</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid rgba(100, 255, 218, 0.1);">
+                                    <td style="padding: 12px;"><strong>Database</strong></td>
+                                    <td style="padding: 12px;">SQLAlchemy + SQLite</td>
+                                    <td style="padding: 12px;">Reliable relational storage for session history and metadata; easily scalable to PostgreSQL</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 12px;"><strong>PDF Processing</strong></td>
+                                    <td style="padding: 12px;">PyPDF2 + pdfplumber</td>
+                                    <td style="padding: 12px;">A dual-extraction approach to handle the high variability of real-world PDF formatting</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <h2>💡 Challenges & Optimizations</h2>
+                        <ul>
+                            <li><strong>Hallucination Control:</strong> Implemented a strict "Persona-Driven" system prompt that forces the model to use <em>only</em> retrieved context</li>
+                            <li><strong>Optimizing Throughput:</strong> Used asynchronous processing and batching for embedding generation to prevent timeouts on large book uploads</li>
+                            <li><strong>Caching Strategy:</strong> Implemented a caching layer for character profiles. Once a book is processed, subsequent chats load instantly without re-running expensive extraction calls</li>
+                            <li><strong>PDF Complexity:</strong> Dual-layer extraction strategy (PyPDF2 + pdfplumber) handles complex PDF layouts and improves data ingestion reliability</li>
+                        </ul>
+
+                        <h2>🎯 Results & Impact</h2>
+                        <p>Aedora successfully demonstrates the power of RAG-based AI applications in creating engaging, contextually accurate conversational experiences. The system's architecture ensures:</p>
+                        <ul>
+                            <li>Minimal hallucinations through strict context grounding</li>
+                            <li>Fast response times via intelligent caching and batching</li>
+                            <li>Scalable design that can easily transition from local SQLite to cloud PostgreSQL</li>
+                            <li>Cost-effective operation through optimized embedding and LLM usage</li>
+                        </ul>
                     </div>
                 </div>
             </div>

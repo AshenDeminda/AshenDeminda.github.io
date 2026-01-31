@@ -88,27 +88,73 @@
                 </div>
 
                 <div class="project-detail-content">
-                    <h2>Overview</h2>
-                    <p>PeerLearn is a mobile-first academic Q&A platform designed to facilitate peer-to-peer learning among students. The application creates a collaborative environment where students can ask questions, share knowledge, and compete on leaderboards to earn recognition for their contributions.</p>
-                    
-                    <h2>Key Features</h2>
-                    <ul>
-                        <li><strong>Real-time Q&A Feed:</strong> Live updates of questions and answers from the community</li>
-                        <li><strong>Gamified Leaderboards:</strong> Point-based system rewarding helpful contributions</li>
-                        <li><strong>Smart Notifications:</strong> Push notifications for question answers and mentions</li>
-                        <li><strong>Cloud Sync:</strong> Seamless data synchronization across devices using Firestore</li>
-                        <li><strong>Rich Text Editor:</strong> Support for formatted text, code snippets, and images</li>
-                        <li><strong>Subject Categories:</strong> Organized content by academic subjects and topics</li>
-                    </ul>
+                    <div class="project-detail-main">
+                        <h2>📖 Project Overview</h2>
+                        <p>PeerLearn is a cross-platform learning app designed to connect students, enable Q&A, and foster collaborative learning. The project leverages modern technologies to ensure scalability, real-time updates, and a smooth user experience.</p>
 
-                    <h2>Technical Implementation</h2>
-                    <p>Built with Flutter for cross-platform mobile development, PeerLearn delivers native-like performance on both iOS and Android. Firebase Authentication ensures secure user access, while Firestore provides real-time database capabilities. The Provider package manages application state efficiently across the app.</p>
+                        <h2>🚀 Key Features</h2>
+                        <ul>
+                            <li><strong>Email/password sign up & sign in</strong></li>
+                            <li><strong>Real-time Q&A:</strong> Post doubts and replies with instant updates</li>
+                            <li><strong>User profiles & leaderboard:</strong> Track contributions and compete</li>
+                            <li><strong>Tag system:</strong> Categorize questions for easy discovery</li>
+                            <li><strong>Responsive design:</strong> Works on Android, iOS, Web, Windows, Mac, Linux</li>
+                        </ul>
 
-                    <h2>Challenges & Solutions</h2>
-                    <p>Managing real-time updates while maintaining app performance was challenging. This was solved by implementing efficient data pagination, caching strategies, and optimistic UI updates that provide instant feedback while syncing with the backend.</p>
+                        <h2>🧠 Architecture & Stack</h2>
+                        <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+                            <thead>
+                                <tr style="border-bottom: 2px solid var(--primary-color);">
+                                    <th style="text-align: left; padding: 12px;">Component</th>
+                                    <th style="text-align: left; padding: 12px;">Technology</th>
+                                    <th style="text-align: left; padding: 12px;">Why it was chosen</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="border-bottom: 1px solid rgba(100, 255, 218, 0.1);">
+                                    <td style="padding: 12px;"><strong>Frontend</strong></td>
+                                    <td style="padding: 12px;">Flutter</td>
+                                    <td style="padding: 12px;">Single codebase for all platforms, beautiful Material Design 3 UI, fast development</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid rgba(100, 255, 218, 0.1);">
+                                    <td style="padding: 12px;"><strong>Backend-as-a-Service</strong></td>
+                                    <td style="padding: 12px;">Firebase (Auth, Firestore, Storage)</td>
+                                    <td style="padding: 12px;">Real-time database, secure authentication, and cloud storage with minimal setup</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid rgba(100, 255, 218, 0.1);">
+                                    <td style="padding: 12px;"><strong>State Management</strong></td>
+                                    <td style="padding: 12px;">Provider</td>
+                                    <td style="padding: 12px;">Simple, scalable state management for Flutter apps</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid rgba(100, 255, 218, 0.1);">
+                                    <td style="padding: 12px;"><strong>Other Packages</strong></td>
+                                    <td style="padding: 12px;">avatar_maker, Material Design 3</td>
+                                    <td style="padding: 12px;">Modern UI, user avatars, accessibility</td>
+                                </tr>
+                            </tbody>
+                        </table>
 
-                    <h2>Results & Impact</h2>
-                    <p>PeerLearn has built an active community of over 1,000 students, with thousands of questions answered daily. The gamification features have increased user engagement by 60%, and students report improved understanding of complex topics through peer explanations.</p>
+                        <h2>💡 Architecture & Structure</h2>
+                        <ul>
+                            <li>Modular codebase: <code>lib/screens/</code> (UI), <code>lib/services/</code> (business logic), <code>lib/models/</code> (data models), <code>lib/widgets/</code> (reusable UI)</li>
+                            <li>Real-time updates using Firestore streams</li>
+                            <li>Auto-seeding of initial data (tags) on first run</li>
+                        </ul>
+
+                        <h2>🔒 Security & Best Practices</h2>
+                        <ul>
+                            <li>Firestore security rules restrict access to authenticated users</li>
+                            <li>Passwords handled securely by Firebase Auth</li>
+                            <li>Error handling and user-friendly messages throughout</li>
+                        </ul>
+
+                        <h2>🎯 Why This Stack?</h2>
+                        <ul>
+                            <li>Fast development and deployment across platforms</li>
+                            <li>Scalable, secure, and easy to maintain</li>
+                            <li>Real-time collaboration and updates out-of-the-box</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>

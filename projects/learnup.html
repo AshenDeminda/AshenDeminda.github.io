@@ -96,26 +96,81 @@
 
                 <div class="project-detail-content">
                     <div class="project-detail-main">
-                        <h2>Overview</h2>
-                        <p>LearnUp is a comprehensive learning management system designed to enhance student engagement and track academic progress effectively. The platform provides a seamless experience for both educators and learners with its intuitive interface and powerful features.</p>
-                        
-                        <h2>Key Features</h2>
+                        <h2>📖 Project Overview</h2>
+                        <p>LearnUp is a full-stack web application designed to make learning interactive and engaging. It provides a seamless experience for both educators and learners, with a modern UI and scalable backend.</p>
+
+                        <h2>🚀 Key Features</h2>
                         <ul>
-                            <li><strong>Course Management:</strong> Create and organize courses with multimedia content, assignments, and assessments</li>
-                            <li><strong>Quiz Generation:</strong> Automated quiz creation with customizable difficulty levels and question types</li>
-                            <li><strong>Real-time Collaboration:</strong> Live chat and discussion forums powered by Socket.io</li>
-                            <li><strong>Performance Analytics:</strong> Detailed dashboards tracking student progress and engagement metrics</li>
-                            <li><strong>Mobile Responsive:</strong> Fully optimized experience across all devices</li>
+                            <li><strong>User Authentication:</strong> Secure sign up/sign in with JWT</li>
+                            <li><strong>Admin Panel:</strong> Manage content, users, and analytics</li>
+                            <li><strong>Interactive Quizzes & Tutorials:</strong> Dynamic quiz generation and multimedia tutorials</li>
+                            <li><strong>Article Management:</strong> Create, edit, and publish educational articles</li>
+                            <li><strong>Real-time Chat:</strong> Live chat with Gemini API integration for smart responses</li>
+                            <li><strong>User Settings & Progress Tracking:</strong> Personalized dashboards and analytics</li>
                         </ul>
 
-                        <h2>Technical Implementation</h2>
-                        <p>Built with modern web technologies, LearnUp leverages React for a dynamic user interface, Node.js and Express for a robust backend API, and MongoDB for flexible data storage. Real-time features are powered by Socket.io, enabling instant updates and collaborative learning experiences.</p>
+                        <h2>🧠 System Architecture & Stack</h2>
+                        <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+                            <thead>
+                                <tr style="border-bottom: 2px solid var(--primary-color);">
+                                    <th style="text-align: left; padding: 12px;">Component</th>
+                                    <th style="text-align: left; padding: 12px;">Technology</th>
+                                    <th style="text-align: left; padding: 12px;">Why it was chosen</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="border-bottom: 1px solid rgba(100, 255, 218, 0.1);">
+                                    <td style="padding: 12px;"><strong>Frontend</strong></td>
+                                    <td style="padding: 12px;">React.js, Vite, Custom CSS</td>
+                                    <td style="padding: 12px;">Component-based, fast rendering, and highly customizable UI</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid rgba(100, 255, 218, 0.1);">
+                                    <td style="padding: 12px;"><strong>State Management</strong></td>
+                                    <td style="padding: 12px;">Context API</td>
+                                    <td style="padding: 12px;">Efficient global state for auth and sessions</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid rgba(100, 255, 218, 0.1);">
+                                    <td style="padding: 12px;"><strong>Backend</strong></td>
+                                    <td style="padding: 12px;">Node.js, Express.js</td>
+                                    <td style="padding: 12px;">Non-blocking, scalable REST API</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid rgba(100, 255, 218, 0.1);">
+                                    <td style="padding: 12px;"><strong>Database</strong></td>
+                                    <td style="padding: 12px;">MongoDB (Mongoose)</td>
+                                    <td style="padding: 12px;">Flexible NoSQL for diverse data (users, quizzes, articles)</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid rgba(100, 255, 218, 0.1);">
+                                    <td style="padding: 12px;"><strong>Authentication</strong></td>
+                                    <td style="padding: 12px;">JWT</td>
+                                    <td style="padding: 12px;">Secure, stateless user sessions</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid rgba(100, 255, 218, 0.1);">
+                                    <td style="padding: 12px;"><strong>Real-time</strong></td>
+                                    <td style="padding: 12px;">Socket.io</td>
+                                    <td style="padding: 12px;">Live chat and collaboration</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 12px;"><strong>Middleware</strong></td>
+                                    <td style="padding: 12px;">Custom Express Middleware</td>
+                                    <td style="padding: 12px;">Authentication, error handling, validation</td>
+                                </tr>
+                            </tbody>
+                        </table>
 
-                        <h2>Challenges & Solutions</h2>
-                        <p>One of the main challenges was implementing real-time collaboration features while maintaining performance. This was solved by implementing efficient WebSocket connections and optimizing database queries with proper indexing and caching strategies.</p>
+                        <h2>💡 Engineering Decisions & Rationale</h2>
+                        <ul>
+                            <li><strong>React & Vite:</strong> Fast, maintainable, and scalable frontend development</li>
+                            <li><strong>Node.js & Express:</strong> Robust backend with a large ecosystem and async support</li>
+                            <li><strong>MongoDB:</strong> Schema-less, rapid iteration for evolving features</li>
+                            <li><strong>JWT & Middleware:</strong> Security and maintainability for user sessions and API endpoints</li>
+                        </ul>
 
-                        <h2>Results & Impact</h2>
-                        <p>The platform has successfully been used by multiple educational institutions, improving student engagement by 45% and reducing administrative workload for educators through automated grading and progress tracking features.</p>
+                        <h2>🎯 Results & Impact</h2>
+                        <ul>
+                            <li>Improved student engagement and learning outcomes</li>
+                            <li>Streamlined content management for admins and educators</li>
+                            <li>Scalable architecture ready for future feature expansion</li>
+                        </ul>
                     </div>
                 </div>
             </div>
