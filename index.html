@@ -249,7 +249,12 @@
                 <h2 class="section-title">Get In Touch</h2>
                 <div class="contact-content">
                     <p>I'm currently open to new opportunities and collaborations. Whether you have a project idea, want to discuss technology, or just want to connect, feel free to reach out!</p>
-                    <a href="mailto:rmashendeminda@gmail.com" class="btn-outline">Say Hello</a>
+                    <ul class="contact-details">
+                        <li><strong>Email:</strong> <a href="mailto:rmashendeminda@gmail.com">rmashendeminda@gmail.com</a></li>
+                        <li><strong>Phone:</strong> <a href="tel:0717071990">0717071990</a></li>
+                        <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/ashen-deminda-rathnayake" target="_blank">linkedin.com/in/ashen-deminda-rathnayake</a></li>
+                    </ul>
+                    <button id="sayHelloBtn" class="btn-outline" type="button">Say Hello</button>
                 </div>
             </div>
         </section>
@@ -259,7 +264,86 @@
         <p>Built by Ashen Deminda</p>
     </footer>
 
+    <!-- Contact Modal -->
+    <div id="contactModal" class="contact-modal" style="display:none;">
+        <div class="contact-modal-backdrop"></div>
+        <div class="contact-modal-content">
+            <button class="contact-modal-close" id="closeContactModal" aria-label="Close">&times;</button>
+            <h2 class="section-title" style="margin-bottom: 20px;">Say Hello</h2>
+            <form id="contactModalForm" class="contact-modal-form" action="https://formspree.io/f/mwvqnzrv" method="POST">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" placeholder="Your Message" required></textarea>
+                <button type="submit" class="btn-outline" style="margin-top: 20px;">Send Message</button>
+            </form>
+        </div>
+    </div>
+
     <script src="js/main.js"></script>
     <script src="js/competitions.js"></script>
+
+    <script>
+    // Modal logic
+    const sayHelloBtn = document.getElementById('sayHelloBtn');
+    const contactModal = document.getElementById('contactModal');
+    const closeContactModal = document.getElementById('closeContactModal');
+    const modalBackdrop = document.querySelector('.contact-modal-backdrop');
+
+    sayHelloBtn.addEventListener('click', () => {
+        contactModal.style.display = 'block';
+        setTimeout(() => {
+            contactModal.classList.add('open');
+        }, 10);
+    });
+
+    function closeModal() {
+        contactModal.classList.remove('open');
+        setTimeout(() => {
+            contactModal.style.display = 'none';
+        }, 200);
+    }
+
+    closeContactModal.addEventListener('click', closeModal);
+    modalBackdrop.addEventListener('click', closeModal);
+
+    // ESC key closes modal
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && contactModal.classList.contains('open')) {
+            closeModal();
+        }
+    });
+
+    // Submit modal form via fetch and redirect to local thank-you page
+    const contactForm = document.getElementById('contactModalForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const url = contactForm.action;
+            const formData = new FormData(contactForm);
+            try {
+                const res = await fetch(url, {
+                    method: 'POST',
+                    body: formData,
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (res.ok) {
+                    // close modal then navigate to custom thank-you
+                    closeModal();
+                    window.location.href = 'thank-you.html';
+                } else {
+                    const data = await res.json().catch(() => ({}));
+                    if (data && data.errors) {
+                        alert(data.errors.map(err => err.message).join('\n'));
+                    } else {
+                        alert('There was a problem submitting the form. Please try again later.');
+                    }
+                }
+            } catch (err) {
+                alert('Network error. Please check your connection and try again.');
+            }
+        });
+    }
+    </script>
 </body>
 </html>
