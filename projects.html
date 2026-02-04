@@ -31,7 +31,7 @@
                 </div>
                 <div class="projects-list-grid">
                     <!-- LearnUp -->
-                    <a href="projects/learnup.html?from=projects" class="project-list-card">
+                    <a href="projects/learnup.html?from=projects" class="project-list-card" onclick="localStorage.setItem('scrollPos', window.scrollY); localStorage.setItem('scrollReturnTo', 'projects'); localStorage.setItem('scrollSavedAt', Date.now().toString());">
                         <div class="project-list-card-image">
                             <img src="assets/images/LearnUp/1.webp" alt="LearnUp">
                             <div class="project-list-card-overlay"></div>
@@ -42,7 +42,7 @@
                         </div>
                     </a>
                     <!-- Aedora -->
-                    <a href="projects/aedora.html?from=projects" class="project-list-card">
+                    <a href="projects/aedora.html?from=projects" class="project-list-card" onclick="localStorage.setItem('scrollPos', window.scrollY); localStorage.setItem('scrollReturnTo', 'projects'); localStorage.setItem('scrollSavedAt', Date.now().toString());">
                         <div class="project-list-card-image">
                             <img src="assets/images/Aedora/1.webp" alt="Aedora">
                             <div class="project-list-card-overlay"></div>
@@ -53,7 +53,7 @@
                         </div>
                     </a>
                     <!-- PeerLearn -->
-                    <a href="projects/peerlearn.html?from=projects" class="project-list-card">
+                    <a href="projects/peerlearn.html?from=projects" class="project-list-card" onclick="localStorage.setItem('scrollPos', window.scrollY); localStorage.setItem('scrollReturnTo', 'projects'); localStorage.setItem('scrollSavedAt', Date.now().toString());">
                         <div class="project-list-card-image">
                             <img src="assets/images/PeerLearn/1.webp" alt="PeerLearn">
                             <div class="project-list-card-overlay"></div>
@@ -64,7 +64,7 @@
                         </div>
                     </a>
                     <!-- EventHub -->
-                    <a href="projects/eventhub.html?from=projects" class="project-list-card">>
+                    <a href="projects/eventhub.html?from=projects" class="project-list-card" onclick="localStorage.setItem('scrollPos', window.scrollY); localStorage.setItem('scrollReturnTo', 'projects'); localStorage.setItem('scrollSavedAt', Date.now().toString());">
                         <div class="project-list-card-image">
                             <img src="assets/images/EventHub/1.webp" alt="EventHub">
                             <div class="project-list-card-overlay"></div>
@@ -82,5 +82,27 @@
         <p>Built by Ashen Deminda</p>
     </footer>
     <script src="js/main.js"></script>
+    <script>
+        window.addEventListener('load', () => {
+            const returnTo = localStorage.getItem('scrollReturnTo');
+            const scrollPos = localStorage.getItem('scrollPos');
+            const savedAt = Number(localStorage.getItem('scrollSavedAt') || '0');
+            const isFresh = savedAt > 0 && (Date.now() - savedAt) < 2 * 60 * 1000;
+            const isProjects = window.location.pathname.toLowerCase().endsWith('/projects.html');
+
+            if (returnTo === 'projects' && isProjects && scrollPos !== null && isFresh) {
+                const y = Number.parseInt(scrollPos, 10);
+                setTimeout(() => {
+                    window.scrollTo({ top: Number.isFinite(y) ? y : 0, left: 0, behavior: 'auto' });
+                }, 0);
+            }
+
+            if (returnTo === 'projects' && isProjects) {
+                localStorage.removeItem('scrollReturnTo');
+                localStorage.removeItem('scrollPos');
+                localStorage.removeItem('scrollSavedAt');
+            }
+        });
+    </script>
 </body>
 </html>

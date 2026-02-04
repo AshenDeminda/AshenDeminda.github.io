@@ -93,7 +93,7 @@
                 <h2 class="section-title">Featured Projects</h2>
                 <div class="projects-grid">
                     <!-- Project 1 - LearnUp -->
-                    <a href="projects/learnup.html?from=home" class="project-card">
+                    <a href="projects/learnup.html?from=home" class="project-card" onclick="localStorage.setItem('scrollPos', window.scrollY); localStorage.setItem('scrollReturnTo', 'index'); localStorage.setItem('scrollSavedAt', Date.now().toString());">
                         <div class="project-card-image">
                             <img src="assets/images/LearnUp/1.webp" alt="LearnUp">
                             <div class="project-card-overlay"></div>
@@ -112,7 +112,7 @@
                     </a>
 
                     <!-- Project 2 - Aedora -->
-                    <a href="projects/aedora.html?from=home" class="project-card">
+                    <a href="projects/aedora.html?from=home" class="project-card" onclick="localStorage.setItem('scrollPos', window.scrollY); localStorage.setItem('scrollReturnTo', 'index'); localStorage.setItem('scrollSavedAt', Date.now().toString());">
                         <div class="project-card-image">
                             <img src="assets/images/Aedora/1.webp" alt="Aedora">
                             <div class="project-card-overlay"></div>
@@ -131,7 +131,7 @@
                     </a>
 
                     <!-- Project 3 - PeerLearn -->
-                    <a href="projects/peerlearn.html?from=home" class="project-card">
+                    <a href="projects/peerlearn.html?from=home" class="project-card" onclick="localStorage.setItem('scrollPos', window.scrollY); localStorage.setItem('scrollReturnTo', 'index'); localStorage.setItem('scrollSavedAt', Date.now().toString());">
                         <div class="project-card-image">
                             <img src="assets/images/PeerLearn/1.webp" alt="PeerLearn">
                             <div class="project-card-overlay"></div>
@@ -150,7 +150,7 @@
                     </a>
 
                     <!-- Project 4 - EventHub -->
-                    <a href="projects/eventhub.html?from=home" class="project-card">
+                    <a href="projects/eventhub.html?from=home" class="project-card" onclick="localStorage.setItem('scrollPos', window.scrollY); localStorage.setItem('scrollReturnTo', 'index'); localStorage.setItem('scrollSavedAt', Date.now().toString());">
                         <div class="project-card-image">
                             <img src="assets/images/EventHub/1.webp" alt="EventHub">
                             <div class="project-card-overlay"></div>
@@ -169,7 +169,7 @@
                     </a>
                 </div>
                 <div class="projects-cta">
-                    <a href="projects.html" class="btn-outline">View All Projects</a>
+                    <a href="projects.html" class="btn-outline" onclick="localStorage.setItem('scrollPos', window.scrollY); localStorage.setItem('scrollReturnTo', 'index'); localStorage.setItem('scrollSavedAt', Date.now().toString());">View All Projects</a>
                 </div>
             </div>
         </section>
@@ -178,7 +178,7 @@
             <div class="container">
                 <h2 class="section-title">Competitions</h2>
                 <div class="competitions-grid">
-                    <a href="competitions.html#code-night" class="competition-card">
+                    <a href="competitions.html#code-night" class="competition-card" onclick="localStorage.setItem('scrollPos', window.scrollY); localStorage.setItem('scrollReturnTo', 'index'); localStorage.setItem('scrollSavedAt', Date.now().toString());">
                         <div class="competition-card-image">
                             <img src="assets/images/competition-dummy.png" alt="Code Night 2025">
                             <div class="competition-card-overlay"></div>
@@ -190,7 +190,7 @@
                         </div>
                     </a>
 
-                    <a href="competitions.html#ieee-xtreme" class="competition-card">
+                    <a href="competitions.html#ieee-xtreme" class="competition-card" onclick="localStorage.setItem('scrollPos', window.scrollY); localStorage.setItem('scrollReturnTo', 'index'); localStorage.setItem('scrollSavedAt', Date.now().toString());">
                         <div class="competition-card-image">
                             <img src="assets/images/competition-dummy.png" alt="IEEE Xtreme 18.0">
                             <div class="competition-card-overlay"></div>
@@ -202,7 +202,7 @@
                         </div>
                     </a>
 
-                    <a href="competitions.html#algoxplore" class="competition-card">
+                    <a href="competitions.html#algoxplore" class="competition-card" onclick="localStorage.setItem('scrollPos', window.scrollY); localStorage.setItem('scrollReturnTo', 'index'); localStorage.setItem('scrollSavedAt', Date.now().toString());">
                         <div class="competition-card-image">
                             <img src="assets/images/competition-dummy.png" alt="Algoxplore 1.0">
                             <div class="competition-card-overlay"></div>
@@ -215,7 +215,7 @@
                     </a>
                 </div>
                 <div class="competitions-cta">
-                    <a href="competitions.html" class="btn-outline">View All Competitions</a>
+                    <a href="competitions.html" class="btn-outline" onclick="localStorage.setItem('scrollPos', window.scrollY); localStorage.setItem('scrollReturnTo', 'index'); localStorage.setItem('scrollSavedAt', Date.now().toString());">View All Competitions</a>
                 </div>
             </div>
         </section>
@@ -288,6 +288,28 @@
     <script src="js/competitions.js"></script>
 
     <script>
+    // Restore scroll position when navigating back
+    window.addEventListener('load', () => {
+        const returnTo = localStorage.getItem('scrollReturnTo');
+        const scrollPos = localStorage.getItem('scrollPos');
+        const savedAt = Number(localStorage.getItem('scrollSavedAt') || '0');
+        const isFresh = savedAt > 0 && (Date.now() - savedAt) < 2 * 60 * 1000;
+        const isIndex = window.location.pathname.endsWith('/') || window.location.pathname.toLowerCase().endsWith('/index.html');
+
+        if (returnTo === 'index' && isIndex && scrollPos !== null && isFresh) {
+            const y = Number.parseInt(scrollPos, 10);
+            setTimeout(() => {
+                window.scrollTo({ top: Number.isFinite(y) ? y : 0, left: 0, behavior: 'auto' });
+            }, 0);
+        }
+
+        if (returnTo === 'index' && isIndex) {
+            localStorage.removeItem('scrollReturnTo');
+            localStorage.removeItem('scrollPos');
+            localStorage.removeItem('scrollSavedAt');
+        }
+    });
+
     // Modal logic
     const sayHelloBtn = document.getElementById('sayHelloBtn');
     const contactModal = document.getElementById('contactModal');
