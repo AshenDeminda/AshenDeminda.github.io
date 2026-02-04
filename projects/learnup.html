@@ -12,7 +12,7 @@
     
     <header>
         <nav style="position:relative;">
-            <a href="../index.html#projects" class="navbar-back-link">← Back to Projects</a>
+            <a href="../projects.html" class="navbar-back-link" id="backLink">← Back to Projects</a>
             <ul class="nav-links">
                 <li><a href="../index.html" class="nav-link">Home</a></li>
                 <li><a href="../index.html#about" class="nav-link">About</a></li>
@@ -181,5 +181,18 @@
     </footer>
 
     <script src="../js/main.js"></script>
+    <script>
+        const backLink = document.getElementById('backLink');
+        const params = new URLSearchParams(window.location.search);
+        const from = params.get('from');
+        
+        if (from === 'projects') {
+            backLink.href = '../projects.html';
+            backLink.textContent = '← Back to Projects';
+        } else {
+            backLink.href = '../index.html';
+            backLink.textContent = '← Back to Home';
+        }
+    </script>
 </body>
 </html>
