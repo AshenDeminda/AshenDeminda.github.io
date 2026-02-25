@@ -365,6 +365,17 @@ function followingDotCursor(options) {
 // Initialize cursor (desktop only)
 let customCursorController = null;
 
+function removeCursorCanvases() {
+  const canvases = document.querySelectorAll('body > canvas');
+  canvases.forEach((canvas) => {
+    const style = canvas.style;
+    const z = Number.parseInt(style.zIndex || '0', 10);
+    if (style.pointerEvents === 'none' && style.position === 'fixed' && z >= 9999) {
+      canvas.remove();
+    }
+  });
+}
+
 function shouldUseCustomCursor() {
   const isTouchDevice =
     (typeof navigator !== 'undefined' && navigator.maxTouchPoints && navigator.maxTouchPoints > 0) ||
@@ -393,6 +404,8 @@ function disableCustomCursor() {
 
 if (shouldUseCustomCursor()) {
   enableCustomCursor();
+} else {
+  removeCursorCanvases();
 }
 
 window.addEventListener('resize', () => {
@@ -400,6 +413,7 @@ window.addEventListener('resize', () => {
     enableCustomCursor();
   } else {
     disableCustomCursor();
+    removeCursorCanvases();
   }
 });
 
