@@ -4,12 +4,18 @@
         padding: 0 50px;
     }
 
+    .projects,
+    .competitions {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
     section {
-        padding: 80px 50px;
+        padding: 70px 50px;
     }
 
     .hero {
-        padding: 110px 50px 0;
+        padding: 90px 50px 0;
     }
 
     .social-sidebar {
@@ -56,12 +62,21 @@
 
     /* Projects */
     .projects-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
+        display: flex;
+        overflow-x: auto;
+        gap: 18px;
+        padding-bottom: 12px;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        width: 100vw;
+        margin-left: calc(50% - 50vw);
+        margin-right: calc(50% - 50vw);
     }
 
     .project-card {
-        height: 400px;
+        flex: 0 0 100vw;
+        height: 380px;
+        scroll-snap-align: start;
     }
 
     .project-card-content {
@@ -79,17 +94,56 @@
 
     /* Competitions */
     .competitions-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
+        display: flex;
+        overflow-x: auto;
+        gap: 18px;
+        padding-bottom: 12px;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        width: 100vw;
+        margin-left: calc(50% - 50vw);
+        margin-right: calc(50% - 50vw);
     }
 
     .competition-card {
-        height: 250px;
+        flex: 0 0 100vw;
+        height: 240px;
+        scroll-snap-align: start;
     }
 
     .competition-top {
         grid-template-columns: 1fr;
         gap: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .projects .section-title,
+    .competitions .section-title {
+        display: block;
+        width: 100%;
+        text-align: left !important;
+        justify-content: flex-start !important;
+        white-space: normal;
+    }
+}
+
+@media (max-width: 768px) {
+    .projects-grid::-webkit-scrollbar,
+    .competitions-grid::-webkit-scrollbar {
+        height: 6px;
+    }
+
+    .projects-grid::-webkit-scrollbar-track,
+    .competitions-grid::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.06);
+        border-radius: 999px;
+    }
+
+    .projects-grid::-webkit-scrollbar-thumb,
+    .competitions-grid::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.18);
+        border-radius: 999px;
     }
 }
 
@@ -106,13 +160,19 @@
         padding: 0 25px;
     }
 
+    .projects,
+    .competitions {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
     section {
-        padding: 60px 25px;
+        padding: 50px 25px;
     }
 
     .hero {
-        padding: 110px 25px 0;
-        min-height: 90vh;
+        padding: 90px 25px 0;
+        min-height: 85vh;
     }
 
     /* Navigation */
@@ -151,6 +211,11 @@
         font-size: 16px;
     }
 
+    .hero .btn-outline {
+        margin-top: 32px;
+        padding: 16px 24px;
+    }
+
     .section-title {
         font-size: 24px;
     }
@@ -179,6 +244,15 @@
     /* Projects */
     .project-tech-list {
         gap: 10px;
+    }
+
+    .projects-grid {
+        gap: 14px;
+        padding-bottom: 10px;
+    }
+
+    .project-card {
+        height: 360px;
     }
 
     /* Experience */
