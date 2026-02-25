@@ -366,6 +366,14 @@ function followingDotCursor(options) {
 let customCursorController = null;
 
 function shouldUseCustomCursor() {
+  const isTouchDevice =
+    (typeof navigator !== 'undefined' && navigator.maxTouchPoints && navigator.maxTouchPoints > 0) ||
+    ('ontouchstart' in window) ||
+    window.matchMedia('(pointer: coarse)').matches ||
+    window.matchMedia('(any-pointer: coarse)').matches;
+
+  if (isTouchDevice) return false;
+
   return window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 }
 
