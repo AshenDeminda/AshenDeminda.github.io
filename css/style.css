@@ -79,6 +79,8 @@ nav {
     list-style: none;
     gap: 30px;
     align-items: center;
+    padding: 0;
+    margin: 0;
 }
 
 .nav-link {
@@ -103,6 +105,116 @@ nav {
 
 .resume-link:hover {
     background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Mobile Sidebar Navigation (base styles; visibility handled in responsive.css) */
+.mobile-menu-btn {
+    display: none;
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 6px;
+    background: transparent;
+    color: var(--text-primary);
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.mobile-menu-icon {
+    position: relative;
+    width: 18px;
+    height: 2px;
+    background: currentColor;
+    display: block;
+}
+
+.mobile-menu-icon::before,
+.mobile-menu-icon::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 18px;
+    height: 2px;
+    background: currentColor;
+}
+
+.mobile-menu-icon::before {
+    top: -6px;
+}
+
+.mobile-menu-icon::after {
+    top: 6px;
+}
+
+.mobile-sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    pointer-events: none;
+    transition: var(--transition);
+    z-index: 1100;
+}
+
+.mobile-sidebar {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: min(320px, 82vw);
+    background-color: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(10px);
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+    transform: translateX(-100%);
+    transition: var(--transition);
+    z-index: 1200;
+    padding: 18px 18px 28px;
+}
+
+.mobile-sidebar-close {
+    margin-left: auto;
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 6px;
+    background: transparent;
+    color: var(--text-primary);
+    font-size: 24px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mobile-sidebar-links {
+    list-style: none;
+    padding: 20px 0 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.mobile-sidebar-links .nav-link {
+    display: inline-block;
+    font-size: 16px;
+    padding: 10px 6px;
+}
+
+body.sidebar-open {
+    overflow: hidden;
+}
+
+body.sidebar-open .mobile-sidebar {
+    transform: translateX(0);
+}
+
+body.sidebar-open .mobile-sidebar-overlay {
+    opacity: 1;
+    pointer-events: auto;
 }
 
 /* Main Content */
@@ -460,7 +572,7 @@ section {
 .contact-modal-form button[type="submit"] {
     align-self: flex-end;
 }
-}
+
 
 .contact-details {
     display: flex;
@@ -496,7 +608,7 @@ section {
     color: var(--accent);
     text-decoration: underline;
 }
-}
+
 
 /* Page Header */
 .page-header {
