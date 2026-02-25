@@ -26,11 +26,11 @@ body {
     background-color: var(--bg-dark);
     position: relative;
     overflow-x: hidden;
-    cursor: none;
+    cursor: auto;
 }
 
 a, button, .nav-link, .btn-outline {
-    cursor: none !important;
+    cursor: auto;
 }
 
 /* Grid Background */
@@ -646,7 +646,7 @@ section {
     border-radius: 8px;
     overflow: hidden;
     text-decoration: none;
-    cursor: none;
+    cursor: auto;
     transition: transform 0.3s ease;
 }
 
@@ -774,7 +774,7 @@ section {
     border-radius: 8px;
     overflow: hidden;
     text-decoration: none;
-    cursor: none;
+    cursor: auto;
     transition: transform 0.3s ease;
 }
 
@@ -991,7 +991,7 @@ footer {
     border: none;
     font-size: 30px;
     padding: 10px 15px;
-    cursor: none;
+    cursor: auto;
     transition: var(--transition);
     z-index: 2;
 }
@@ -1024,8 +1024,21 @@ footer {
     height: 10px;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.5);
-    cursor: none;
+    cursor: auto;
     transition: var(--transition);
+}
+
+/* Custom cursor is desktop-only (mouse/trackpad) */
+@media (hover: hover) and (pointer: fine) {
+    body {
+        cursor: none;
+    }
+
+    a, button, .nav-link, .btn-outline,
+    .project-card, .competition-card,
+    .detail-prev, .detail-next, .detail-dot {
+        cursor: none !important;
+    }
 }
 
 .detail-dot.active {

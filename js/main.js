@@ -318,10 +318,10 @@ function followingDotCursor(options) {
   }
 
   function destroy() {
-    canvas.remove();
-    cancelAnimationFrame(loop);
+    if (canvas) canvas.remove();
+    if (animationFrame) cancelAnimationFrame(animationFrame);
     element.removeEventListener("mousemove", onMouseMove);
-    window.addEventListener("resize", onWindowResize);
+    window.removeEventListener("resize", onWindowResize);
   }
 
   function Dot(x, y, width, lag) {
@@ -362,10 +362,37 @@ function followingDotCursor(options) {
   };
 }
 
-// Initialize cursor
-followingDotCursor({
-  color: "rgba(255, 255, 255, 0.5)",
-  zIndex: 9999
+// Initialize cursor (desktop only)
+let customCursorController = null;
+
+function shouldUseCustomCursor() {
+  return window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+}
+
+function enableCustomCursor() {
+  if (customCursorController) return;
+  customCursorController = followingDotCursor({
+    color: "rgba(255, 255, 255, 0.5)",
+    zIndex: 9999
+  });
+}
+
+function disableCustomCursor() {
+  if (!customCursorController) return;
+  customCursorController.destroy();
+  customCursorController = null;
+}
+
+if (shouldUseCustomCursor()) {
+  enableCustomCursor();
+}
+
+window.addEventListener('resize', () => {
+  if (shouldUseCustomCursor()) {
+    enableCustomCursor();
+  } else {
+    disableCustomCursor();
+  }
 });
 
 // Smooth scrolling for navigation links
