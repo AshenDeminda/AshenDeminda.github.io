@@ -4,7 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thank You — Ashen Deminda</title>
-    <link rel="stylesheet" href="css/style.css?v=20260225b">
+        <script>
+            (function () {
+                var BUILD = '20260225h';
+                try {
+                    if (location.protocol !== 'http:' && location.protocol !== 'https:') return;
+                    var u = new URL(location.href);
+                    if (u.searchParams.get('v') === BUILD) return;
+                    if (sessionStorage.getItem('forcedBuildVersion') === BUILD) return;
+                    u.searchParams.set('v', BUILD);
+                    sessionStorage.setItem('forcedBuildVersion', BUILD);
+                    location.replace(u.toString());
+                } catch (e) {}
+            })();
+        </script>
+        <link rel="stylesheet" href="css/style.css?v=20260225h">
 </head>
 <body>
     <div class="grid-background"></div>
@@ -15,6 +29,6 @@
             <a href="index.html" class="btn-outline">Back to Home</a>
         </div>
     </main>
-    <script src="js/main.js?v=20260225b"></script>
+    <script src="js/main.js?v=20260225h"></script>
 </body>
 </html>

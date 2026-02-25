@@ -1,3 +1,23 @@
+// Cache-busting helper: keep a versioned URL so mobile browsers don't stick to stale cached HTML
+(function ensureVersionedUrl() {
+  const BUILD_VERSION = '20260225h';
+  try {
+    if (window.location.protocol !== 'http:' && window.location.protocol !== 'https:') return;
+
+    const url = new URL(window.location.href);
+    if (url.searchParams.get('v') === BUILD_VERSION) return;
+
+    const alreadyForced = window.sessionStorage.getItem('forcedBuildVersion');
+    if (alreadyForced === BUILD_VERSION) return;
+
+    url.searchParams.set('v', BUILD_VERSION);
+    window.sessionStorage.setItem('forcedBuildVersion', BUILD_VERSION);
+    window.location.replace(url.toString());
+  } catch {
+    // ignore
+  }
+})();
+
 // Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -74,6 +94,36 @@ const observer = new IntersectionObserver(entries => {
 }, observerOptions);
 
 document.addEventListener('DOMContentLoaded', () => {
+  // If the page has a cache-busting version in the URL, propagate it to internal links
+  try {
+    const currentUrl = new URL(window.location.href);
+    const v = currentUrl.searchParams.get('v');
+    if (v) {
+      document.querySelectorAll('a[href]').forEach((a) => {
+        const rawHref = a.getAttribute('href');
+        if (!rawHref) return;
+        if (rawHref.startsWith('#')) return;
+        if (rawHref.startsWith('mailto:') || rawHref.startsWith('tel:')) return;
+        if (rawHref.startsWith('http://') || rawHref.startsWith('https://')) return;
+
+        let linkUrl;
+        try {
+          linkUrl = new URL(rawHref, window.location.href);
+        } catch {
+          return;
+        }
+
+        if (linkUrl.origin !== currentUrl.origin) return;
+        if (!linkUrl.pathname.endsWith('.html')) return;
+
+        linkUrl.searchParams.set('v', v);
+        a.setAttribute('href', linkUrl.toString());
+      });
+    }
+  } catch {
+    // ignore
+  }
+
     const sections = document.querySelectorAll('section');
     sections.forEach(section => {
         // Skip animation for detail pages
