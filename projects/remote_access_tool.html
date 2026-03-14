@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Remote Access Tool - Ashen Deminda</title>
+        <script>
+            (function () {
+                var BUILD = '20260225h';
+                try {
+                    if (location.protocol !== 'http:' && location.protocol !== 'https:') return;
+                    var u = new URL(location.href);
+                    if (u.searchParams.get('v') === BUILD) return;
+                    if (sessionStorage.getItem('forcedBuildVersion') === BUILD) return;
+                    u.searchParams.set('v', BUILD);
+                    sessionStorage.setItem('forcedBuildVersion', BUILD);
+                    location.replace(u.toString());
+                } catch (e) {}
+            })();
+        </script>
+        <link rel="stylesheet" href="../css/style.css?v=20260225h">
+    <link rel="stylesheet" href="../css/responsive.css?v=20260225h">
+</head>
+<body>
+    <div class="grid-background"></div>
+
+    <header>
+        <nav style="position:relative;">
+            <button class="mobile-menu-btn" type="button" aria-label="Open menu" aria-controls="mobileSidebar" aria-expanded="false">
+                <span class="mobile-menu-icon" aria-hidden="true"></span>
+            </button>
+            <a href="../projects.html" class="navbar-back-link" id="backLink">← Back to Projects</a>
+            <ul class="nav-links">
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="../index.html#about" class="nav-link">About</a></li>
+                <li><a href="../index.html#projects" class="nav-link">Projects</a></li>
+                <li><a href="../index.html#experience" class="nav-link">Experience</a></li>
+                <li><a href="../index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="mobile-sidebar-overlay" data-mobile-sidebar-overlay></div>
+    <aside class="mobile-sidebar" id="mobileSidebar" aria-hidden="true">
+        <button class="mobile-sidebar-close" type="button" aria-label="Close menu">×</button>
+        <ul class="mobile-sidebar-links">
+            <li><a href="../projects.html" class="nav-link">← Back to Projects</a></li>
+            <li><a href="../index.html" class="nav-link">Home</a></li>
+            <li><a href="../index.html#about" class="nav-link">About</a></li>
+            <li><a href="../index.html#projects" class="nav-link">Projects</a></li>
+            <li><a href="../index.html#experience" class="nav-link">Experience</a></li>
+            <li><a href="../index.html#contact" class="nav-link">Contact</a></li>
+        </ul>
+    </aside>
+
+    <main>
+        <section class="project-detail">
+            <div class="container-detail">
+                <div class="project-detail-header">
+                    <span class="project-detail-category">Cybersecurity &amp; Network Engineering</span>
+                    <h1 class="project-detail-title">Secure Remote Access Tool</h1>
+                    <p class="project-detail-subtitle">Encrypted Remote Command Execution with Hybrid Cryptography</p>
+                </div>
+
+                <div class="project-detail-top">
+                    <div class="project-detail-slideshow">
+                        <div class="detail-slideshow">
+                            <img src="../assets/images/Remote_access_tool/1.webp" alt="Secure Remote Access Tool Screenshot 1" class="detail-slide active">
+                            <!-- Only one image available -->
+                            <button class="detail-prev" aria-label="Previous">‹</button>
+                            <button class="detail-next" aria-label="Next">›</button>
+                            <div class="detail-dots">
+                                <span class="detail-dot active" data-slide="0"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-detail-info">
+                        <div class="detail-section">
+                            <h3>Technologies</h3>
+                            <ul class="tech-tags">
+                                <li>Java</li>
+                                <li>TCP/IP (Socket Programming)</li>
+                                <li>AES-256-GCM Encryption</li>
+                                <li>RSA-2048-OAEP Key Exchange</li>
+                                <li>PBKDF2-HMAC-SHA256 Password Hashing</li>
+                                <li>Multi-threading</li>
+                            </ul>
+                        </div>
+
+                        <div class="detail-section">
+                            <h3>Project Type</h3>
+                            <p>Cybersecurity Tool (Secure Remote Shell)</p>
+                        </div>
+
+                        <div class="detail-section">
+                            <h3>Links</h3>
+                            <div class="detail-links">
+                                <span class="detail-badge">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                                    Solo Project
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-detail-content">
+                    <div class="project-detail-main">
+                        <h2>📦 Project Overview</h2>
+                        <p>The Secure Remote Access Tool is a Java-based telnet alternative designed to securely execute system commands over a TCP/IP network. It processes terminal commands remotely via <code>ProcessBuilder</code> and features dedicated logic to manage shell built-ins like <code>cd</code> by tracking the per-connection working directory state.</p>
+                        <p>The tool is engineered to mitigate threats such as network eavesdropping, ciphertext tampering, and brute-force attacks by integrating robust cryptographic standards.</p>
+
+                        <h2>🛡️ Security Features &amp; Cryptography</h2>
+                        <ul>
+                            <li><strong>Hybrid Key Exchange:</strong> Uses RSA-2048 with OAEP padding (SHA-256 + MGF1) to securely exchange AES session keys, protecting against Bleichenbacher-style attacks.</li>
+                            <li><strong>Per-Client Session Isolation:</strong> Generates a unique AES-256 session key for every client thread, so compromising one session does not impact others.</li>
+                            <li><strong>Data Integrity and Confidentiality:</strong> Encrypts traffic using AES-256 in GCM mode (no padding). A random 12-byte IV is used per message, and a 128-bit authentication tag detects tampering (e.g., <code>AEADBadTagException</code>).</li>
+                            <li><strong>Secure Authentication &amp; Storage:</strong> Hashes passwords with PBKDF2-HMAC-SHA256 using 65,536 iterations and a unique 128-bit salt.</li>
+                            <li><strong>Timing Attack Prevention:</strong> Verifies credentials with constant-time XOR comparisons to avoid leaking match length via timing.</li>
+                            <li><strong>Brute-Force &amp; DoS Mitigation:</strong> Limits login attempts to 3 per IP using a thread-safe <code>ConcurrentHashMap</code>, enforces a 30-second lockout on failure, and applies a 5-minute idle timeout to reduce resource exhaustion.</li>
+                        </ul>
+
+                        <h2>🔄 Connection &amp; Execution Workflow</h2>
+                        <ol>
+                            <li><strong>TCP Connection Initialization:</strong> The client connects to the server port (default <strong>6600</strong>), and the server checks the connecting IP against the lockout list.</li>
+                            <li><strong>Key Exchange Sequence:</strong> The server shares its RSA public key (Base64, X.509 format). The client generates a new AES-256 key, encrypts it with the public key, and sends it to the server.</li>
+                            <li><strong>Authentication Phase:</strong> The client submits AES-encrypted username and password, and the server validates them against stored PBKDF2 parameters.</li>
+                            <li><strong>Encrypted Execution Loop:</strong> After authentication, the client sends AES-encrypted commands. The server logs only the IP and character count (avoiding plaintext logging), executes commands, and returns AES-encrypted terminal output to the client.</li>
+                        </ol>
+
+                        <h2>🎯 Threat Modeling &amp; Testing Framework</h2>
+                        <ul>
+                            <li><strong>MITM Attack Simulation:</strong> Includes a Man-in-the-Middle demonstration (<code>MitmDemo.java</code>) that intercepts the key exchange and substitutes the RSA public key, highlighting the need for TLS/SSL authentication or certificate pinning.</li>
+                            <li><strong>Security Unit Testing:</strong> A dedicated test suite (<code>SecurityUtilsTest.java</code>) validates AES-GCM round trips, Unicode stability, random IV behavior, and authentication tag tamper detection.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Built by Ashen Deminda</p>
+    </footer>
+
+    <script src="../js/main.js?v=20260225h"></script>
+    <script>
+        const backLink = document.getElementById('backLink');
+        const params = new URLSearchParams(window.location.search);
+        const from = params.get('from');
+
+        if (from === 'projects') {
+            backLink.href = '../projects.html';
+            backLink.textContent = '← Back to Projects';
+        } else {
+            backLink.href = '../index.html';
+            backLink.textContent = '← Back to Home';
+        }
+
+    </script>
+</body>
+</html>
