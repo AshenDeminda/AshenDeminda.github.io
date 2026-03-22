@@ -1424,6 +1424,24 @@ footer {
 .project-list-card:hover .project-list-card-overlay {
     opacity: 0;
 }
+
+/* Mobile/scroll "hover" simulation */
+.project-list-card.is-active {
+    transform: translateY(-5px);
+}
+
+.project-list-card.is-active .project-list-card-image img {
+    transform: scale(1.05);
+}
+
+.project-list-card.is-active .project-list-card-overlay {
+    opacity: 0;
+}
+
+/* Touch feedback */
+.project-list-card:active {
+    transform: translateY(-3px);
+}
 .project-list-card-content {
     position: absolute;
     bottom: 0;
