@@ -29,7 +29,10 @@
             <button class="mobile-menu-btn" type="button" aria-label="Open menu" aria-controls="mobileSidebar" aria-expanded="false">
                 <span class="mobile-menu-icon" aria-hidden="true"></span>
             </button>
-            <a href="../projects.html" class="navbar-back-link" id="backLink">← Back to Projects</a>
+            <a href="../projects.html" class="navbar-back-link" id="backLink" aria-label="Back">
+                <span class="back-arrow" aria-hidden="true">←</span>
+                <span class="back-text">Back to Projects</span>
+            </a>
             <ul class="nav-links">
                 <li><a href="../index.html" class="nav-link">Home</a></li>
                 <li><a href="../index.html#about" class="nav-link">About</a></li>
@@ -213,15 +216,16 @@
     <script src="../js/main.js?v=20260225h"></script>
     <script>
         const backLink = document.getElementById('backLink');
+        const backText = backLink ? backLink.querySelector('.back-text') : null;
         const params = new URLSearchParams(window.location.search);
         const from = params.get('from');
         
         if (from === 'projects') {
             backLink.href = '../projects.html';
-            backLink.textContent = '← Back to Projects';
+            if (backText) backText.textContent = 'Back to Projects';
         } else {
             backLink.href = '../index.html';
-            backLink.textContent = '← Back to Home';
+            if (backText) backText.textContent = 'Back to Home';
         }
         
     </script>
